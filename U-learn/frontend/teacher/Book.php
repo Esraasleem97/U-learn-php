@@ -15,7 +15,7 @@ require "../../Includes/navbar/teacher.php";
                     for ($i = 0 ; $i < 4 ; $i++) {
                     ?>
 
-                    <a href="index.php" class="stage m-4 w-full sm:w-3/6 md:w-2/5 lg:w-1/3 xl:w-1/5">
+                    <a href="add.php" class="stage m-4 w-full sm:w-3/6 md:w-2/5 lg:w-1/3 xl:w-1/5">
                         <p class="transition duration-300">اسم المادة</p>
                         <i class="fas fa-arrow-left mt-2 text-main-color"></i>
                     </a>
