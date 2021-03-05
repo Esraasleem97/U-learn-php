@@ -4,7 +4,7 @@ require "../../Includes/header.php";
 <div class="bg-gray-100 w-full min-h-screen flex">
     <div class="container m-auto px-8">
         <div class="grid grid-cols-2 gap-4">
-            <form action="" method=""
+            <form action="../dashboard.php" method=""
                   class="mx-auto rounded-lg shadow-xl overflow-hidden p-6 space-y-10 bg-white w-7/12">
 
                 <h2 class="text-2xl font-bold text-center">تسجيل الدخول</h2>

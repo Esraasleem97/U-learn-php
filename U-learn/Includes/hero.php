@@ -1,4 +1,4 @@
-<div class="border-b border-gray-300">
+<div class="border-b border-gray-300 container m-auto">
     <div class="flex items-center mb-4">
         <img src="layouts/img/R22.jpg" alt="" class="mx-4 w-28">
         <div>
