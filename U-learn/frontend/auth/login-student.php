@@ -1,10 +1,12 @@
 <?php
 require "../../Includes/header.php";
+require "../../phpfile/login.php";
+
 ?>
 <div class="bg-gray-100 w-full min-h-screen flex">
     <div class="container m-auto px-8">
         <div class="grid grid-cols-2 gap-4">
-            <form action="../student/Stage.php" method=""
+            <form action="" method="post"
                   class="mx-auto rounded-lg shadow-xl overflow-hidden p-6 space-y-10 bg-white w-7/12">
 
                 <h2 class="text-2xl font-bold text-center">تسجيل الدخول للطلبة</h2>

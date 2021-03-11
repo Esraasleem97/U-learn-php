@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <div class="container mx-auto">
     <div class="flex justify-start w-full -mt-1">
         <img src="../../layouts//img/k.png" alt="" class="h-28 object-cover">
@@ -18,8 +22,14 @@
         </ul>
     </nav>
     <div class="border bg-gray-50 shadow-md px-12 py-6 my-4 text-2xl tracking-wide">
-        <h1>اسم الطالب</h1>
+        <h1>
+
+            <?php
+            // Echo session variables that were set on previous page
+            echo     $_SESSION['teachername'].  "<br>";
+            ?>
+
+        </h1>
     </div>
 
-<!-- isra test1 -->
 </div>

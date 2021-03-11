@@ -24,6 +24,8 @@ require "../../Includes/header.php";
                     <label for="password_confirmation" class="label"><i class="ti ti-lock"></i> تأكيد كلمة المرور</label>
                 </div>
 
+
+
                 <div class="my-12 flex justify-center w-full">
                     <input type="submit" class="btn btn-main" value="تسجيل">
                 </div>
