@@ -1,6 +1,6 @@
 <?php
-require "../../phpfile/db.php";
-//require "../../frontend/auth/register-student.php";
+require "../../backend/db.php";
+//require "../../frontend/auth/register-form.php";
 // When form submitted, insert values into the database.
 if (isset($_REQUEST['name'])) {
     // removes backslashes

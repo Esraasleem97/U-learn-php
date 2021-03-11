@@ -36,8 +36,8 @@ require "Includes/hero.php";
                 ابدأ مشوار التعلم عن بعد
             </p>
             <div class="flex flex-col mt-16 justify-center mx-auto">
-                <a href="frontend/auth/login-student.php" class="bg-white text-center py-4 px-4 sm:px-10 xl:px-20 mb-4 text-base sm:text-2xl">تسجيل دخول للطلبة</a>
-                <a href="frontend/auth/login-teacher.php" class="bg-white text-center py-4 px-4 sm:px-10 xl:px-20 mb-4 text-base sm:text-2xl">تسجيل دخول للأساتذة</a>
+                <a href="frontend/auth/login-student-form.php" class="bg-white text-center py-4 px-4 sm:px-10 xl:px-20 mb-4 text-base sm:text-2xl">تسجيل دخول للطلبة</a>
+                <a href="frontend/auth/login-teacher-form.php" class="bg-white text-center py-4 px-4 sm:px-10 xl:px-20 mb-4 text-base sm:text-2xl">تسجيل دخول للأساتذة</a>
             </div>
         </div>
 

@@ -1,6 +1,6 @@
 <?php
 require "../../Includes/header.php";
-require "../../phpfile/create-account.php";
+require "../../backend/create-account.php";
 
 
 ?>
@@ -28,10 +28,12 @@ require "../../phpfile/create-account.php";
                 </div>
 
                 <div class="input-form" required>
+
                     <input type="radio" id="student" name="user" value="Student">
-                    <label for="student">Student </label><br>
+                    <label for="student">طالب  </label><br>
                     <input type="radio" id="teather" name="user" value="teather">
-                    <label for="teather">teather</label><br>
+                    <label for="teather">معلم </label><br>
+                    <label for="student" class="label"><i class="ti ti-lock"></i> تسجل بحساب  </label>
 
                 </div>
 
