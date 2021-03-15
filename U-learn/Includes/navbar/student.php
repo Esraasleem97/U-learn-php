@@ -1,5 +1,4 @@
 <?php
-session_start();
 ?>
 
 <div class="container mx-auto">
@@ -17,7 +16,7 @@ session_start();
             <div class="flex items-center relative">
                 <li class="text-main-color font-medium text-xl"><a href="notify.php"><i class="far fa-bell"></i></a></li>
                 <li class="mr-4"> |</li>
-                <li class="mr-4"><a href="">تسجيل الخروج</a></li>
+                <li class="mr-4"><a href="../../backend/Logout.php">تسجيل الخروج</a></li>
             </div>
         </ul>
     </nav>
@@ -26,7 +25,7 @@ session_start();
 
             <?php
             // Echo session variables that were set on previous page
-            echo     $_SESSION['studentname'].  "<br>";
+            echo    $_SESSION['username'].  "<br>";
             ?>
 
         </h1>

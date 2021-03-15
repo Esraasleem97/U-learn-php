@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION['username'])){
+
+
 require "../../Includes/header.php";
 require "../../Includes/navbar/student.php";
 ?>
@@ -32,4 +36,9 @@ require "../../Includes/navbar/student.php";
 </div>
 <?php
 require "../../Includes/footer.php";
+} else {
+
+    header("Location:../../frontend/auth/login-form.php");
+    exit();
+}
 ?>

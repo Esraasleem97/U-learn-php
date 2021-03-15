@@ -1,6 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION['username'])){
+
 require "../../Includes/header.php";
 require "../../Includes/navbar/student.php";
+
 ?>
 <div class="bg-gray-100 w-full">
     <form action="">
@@ -28,5 +32,12 @@ require "../../Includes/navbar/student.php";
     </form>
 </div>
 <?php
+
+
 require "../../Includes/footer.php";
+} else {
+
+    header("Location:../../frontend/auth/login-form.php");
+ exit();
+}
 ?>

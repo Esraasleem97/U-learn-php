@@ -1,46 +1,24 @@
 <?php
 require('db.php');
 
+//  إحضار القيم عندما يختار المسؤول قبول ارفض المستخدم
+$email = isset($_GET['email']) ? $_GET['email'] : "";
+$do = isset($_GET['do']) ? $_GET['do'] : "";
 
+// عند اختيار قبول يتم تعديل بيانات الداتا بيس لقبول المستخدم الجديد
+if ($do == 'accept') {
 
-if ($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['acceptstudent'])) {
-    acceptStudent();
-    echo  $_SESSION['userEmail'];
-
-}
-
-function acceptStudent()
-{
-    //  $sql = "UPDATE `student` SET  `std-Approve` = 1  WHERE 	`std-email` = '$num'";
-    echo "update student 1";
+    $query1 = "UPDATE `users` SET  `user-Approve` = 1  WHERE 	`email` = '$email'";
+    $result = mysqli_query($con, $query1) or die(mysqli_error($con));
+    header("Location: ../admin/dashboard.php");
 
 }
+// عند اختيار رفض يتم تعديل بيانات الداتا بيس لرفض المستخدم وعدم إضهار اسمه مجدداً
 
-function acceptteacher($num)
-{
-    $sql = "UPDATE `student` SET  `teacher-Approve`= 1 WHERE 	`teacher-email` = '$num'";
-
-    echo "update teather 1";
-}
-
-function rejectStudent($num)
-{
-    $sql = "UPDATE `student` SET  `std-Approve` = 2 WHERE 	`std-email` = '$num'";
-    echo "update student 2";
-
-}
-
-function rejectteacher($num)
-{
-    $sql = "UPDATE `student` SET  `teacher-Approve`= 2 	`teacher-email` = '$num'";
-    echo "update teather 2";
-
+elseif ($do == 'rejict') {
+    $query2 = "UPDATE `users` SET  `user-Approve` = 2  WHERE 	`email` = '$email'";
+    $result = mysqli_query($con, $query2) or die(mysqli_error($con));
+    header("Location: ../admin/dashboard.php");
 }
 
 ?>
-
-<script type="text/javascript">
-    function myFunction () {
-        // var selectValuse = $(this).closest("tr").find("[name='text']").val();
-        alert("selectValuse");
-</script>
