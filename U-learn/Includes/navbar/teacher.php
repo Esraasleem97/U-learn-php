@@ -10,9 +10,9 @@
 
         <ul class="flex justify-between">
             <div class="flex">
-                <li class="list-border-b relative"><a href="Stage.php">المرحلة الدراسية</a></li>
-                <li class="relative mx-12"><a href="Book.php">الكتب الدراسية</a></li>
-                <li class="relative"><a href="index.php">الدروس</a></li>
+                <li class="list-border-b relative"><a href="index.php">الدروس </a></li>
+<!--                <li class="relative mx-12"><a href="Book.php">الكتب الدراسية</a></li>-->
+                <li class="relative mx-12"><a href="add.php">إضافة دروس</a></li>
             </div>
             <div class="flex items-center relative">
                 <li class="text-main-color font-medium text-xl"><a href="notify.php"><i class="far fa-bell"></i></a></li>

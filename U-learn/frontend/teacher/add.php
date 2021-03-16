@@ -1,27 +1,57 @@
 <?php
-
 session_start();
-if (isset($_SESSION['username'])){
-require "../../Includes/header.php";
-require "../../Includes/navbar/teacher.php";
-?>
-<div class="bg-gray-100 w-full">
-    <form action="">
-        <div class="container mx-auto my-8">
+
+    require "../../Includes/header.php";
+    require "../../Includes/navbar/teacher.php";
+    require "../../backend/get-course.php";
+    require "../../backend/add-video.php";
+    ?>
+    <div class="bg-gray-100 w-full">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="container mx-auto my-8">
                 <div class="border shadow-xl rounded-md w-full bg-white px-12 pb-10">
                     <div>
                         <h1 class="text-3xl font-semibold my-8">إضافة درس جديد</h1>
                     </div>
                     <div class="w-full sm:w-11/12 md:w-3/4 lg:w-2/3 my-16">
                         <div class="input-form my-8">
-                            <input type="text" id="title" name="title" value="" placeholder=" " class="input"/>
+                            <input type="text" id="title" name="title" value="" placeholder=" " class="input" required="required"/>
                             <label for="title" class="label font-bold">العنوان</label>
                         </div>
                         <div class="input-form mb-8">
-                            <textarea name="details"  id="details" cols="30" rows="10" placeholder=" "
-                                      class="input"></textarea>
+                            <textarea name="details" id="details" cols="30" rows="10" placeholder=" "
+                                      class="input"  required="required" ></textarea>
                             <label for="details" class="label font-bold">الملخص</label>
                         </div>
+
+<!--                        <div class="input-form my-8" >-->
+<!---->
+<!--                            <input type="radio" id="stage1" name="stage" value="stage1">-->
+<!--                            <label for="stage1"> المرحلة الأولى </label>-->
+<!--                            <input type="radio" id="stage2" name="stage" value="stage2">-->
+<!--                            <label for="stage2">المرحلة الثانية </label>-->
+<!--                            <input type="radio" id="stage3" name="stage" value="stage3">-->
+<!--                            <label for="stage3"> المرحلة الثالثة </label>-->
+<!--                            <input type="radio" id="stage4" name="stage" value="stage4">-->
+<!--                            <label for="stage4">المرحلة الرابعة </label>-->
+<!--                            <label for="student" class="label"><i class="ti ti-lock"></i> المرحلة الدراسية </label>-->
+<!---->
+<!--                        </div>-->
+                        <div class="input-form my-8" >
+                            <label for="student" class="label"><i class="ti ti-lock"></i> اختيار اسم الماد </label>
+                            <select name="course" id="course" required="required">
+                                <option value=''> ... </option>
+
+                                <?php
+                                for ($i = 0; $i < count($_SESSION['courseName']); $i++) {
+                                    echo "<option value='" . $_SESSION['courseID'][$i] . "'>" . $_SESSION['courseName'][$i] . " </option>";
+
+                                }
+                                ?>
+
+                            </select>
+                        </div>
+
                         <div class="border w-full">
                             <main class="container max-w-screen-lg h-full">
                                 <!-- file upload modal -->
@@ -32,15 +62,16 @@ require "../../Includes/navbar/teacher.php";
                                     <!-- scroll area -->
                                     <section class="overflow-auto p-8 w-full h-full flex flex-col">
                                         <header
-                                            class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
+                                                class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                                             <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                                                <span>قم بتحميل فيديو</span>&nbsp;<span>أو أي ملف</span>
+                                                <span>قم بتحميل فيديو</span>&nbsp;
+<!--                                                <span>أو أي ملف</span>-->
                                             </p>
-                                            <input id="hidden-input" type="file" name="media" class="hidden"/>
-                                            <button type="button" id="button"
-                                                    class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
-                                                تحميل الآن
-                                            </button>
+                                            <input  type="file" name="media"  required="required" />
+<!--                                            <button type="button" id="button"-->
+<!--                                                    class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->
+<!--                                                تحميل الآن-->
+<!--                                            </button>-->
                                         </header>
 
                                         <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
@@ -69,7 +100,7 @@ require "../../Includes/navbar/teacher.php";
                                          class="img-preview hidden w-full h-full sticky object-cover rounded-md bg-fixed"/>
 
                                     <section
-                                        class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
+                                            class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
                                         <h1 class="flex-1 group-hover:text-blue-800"></h1>
                                         <div class="flex">
                                         <span class="p-1 text-blue-800">
@@ -83,7 +114,7 @@ require "../../Includes/navbar/teacher.php";
                                         </span>
                                             <p class="p-1 size text-xs text-gray-700"></p>
                                             <button
-                                                class="delete ml-auto focus:outline-none hover:bg-gray-300 p-1 rounded-md text-gray-800">
+                                                    class="delete ml-auto focus:outline-none hover:bg-gray-300 p-1 rounded-md text-gray-800">
                                                 <svg class="pointer-events-none fill-current w-4 h-4 ml-auto"
                                                      xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                      viewBox="0 0 24 24">
@@ -105,7 +136,7 @@ require "../../Includes/navbar/teacher.php";
                                          class="img-preview w-full h-full sticky object-cover rounded-md bg-fixed"/>
 
                                     <section
-                                        class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
+                                            class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
                                         <h1 class="flex-1"></h1>
                                         <div class="flex">
                                         <span class="p-1">
@@ -114,14 +145,14 @@ require "../../Includes/navbar/teacher.php";
                                                  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                  viewBox="0 0 24 24">
                                             <path
-                                                d="M5 8.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5zm9 .5l-2.519 4-2.481-1.96-4 5.96h14l-5-8zm8-4v14h-20v-14h20zm2-2h-24v18h24v-18z"/>
+                                                    d="M5 8.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5zm9 .5l-2.519 4-2.481-1.96-4 5.96h14l-5-8zm8-4v14h-20v-14h20zm2-2h-24v18h24v-18z"/>
                                             </svg>
                                         </i>
                                         </span>
 
                                             <p class="p-1 size text-xs"></p>
                                             <button
-                                                class="delete ml-auto focus:outline-none hover:bg-gray-300 p-1 rounded-md">
+                                                    class="delete ml-auto focus:outline-none hover:bg-gray-300 p-1 rounded-md">
                                                 <svg class="pointer-events-none fill-current w-4 h-4 ml-auto"
                                                      xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                      viewBox="0 0 24 24">
@@ -144,11 +175,8 @@ require "../../Includes/navbar/teacher.php";
             </div>
         </form>
     </div>
-<?php
-require "../../Includes/footer.php";
-} else {
+    <?php
 
-    header("Location:../../frontend/auth/login-form.php");
-    exit();
-}
+    require "../../Includes/footer.php";
+
 ?>

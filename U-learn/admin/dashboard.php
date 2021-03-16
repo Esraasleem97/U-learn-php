@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
 
     require "../Includes/header.php";
     require "../Includes/navbar/admin.php";
@@ -148,7 +148,7 @@ if (isset($_SESSION['username'])) {
 
     require "../Includes/footer.php";
 } else {
-    header("Location:../../frontend/auth/login-form.php");
+    header("Location:../frontend/auth/login-form.php");
     exit();
 }
 ?>

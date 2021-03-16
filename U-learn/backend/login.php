@@ -13,8 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
 
-    // يعيد المعلومات اليوزر من الداتا بيس
-
+    // يعيد المعلومات  من الداتا بيس
     while ($row = mysqli_fetch_assoc($result)) {
         $_SESSION['username'] = $row['username'];
         $Approve = $row['user-Approve'];
@@ -31,11 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query2 = "UPDATE `users` SET `LastSeen`= '$create_date'  WHERE `userid` = " . $_SESSION['userid'];
             $result = mysqli_query($con, $query2) or die(mysqli_error($con));
 
-
             if ($GroupID == 1) {
                 header("Location: ../student/Stage.php");
             } elseif ($GroupID == 2) {
-                header("Location: ../teacher/Stage.php");
+                header("Location: ../teacher/index.php");
             } elseif ($GroupID == 3) {
                 header("Location: ../../admin/dashboard.php");
             }
@@ -43,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } elseif ($Approve == 0) {
 
             $_SESSION['Error-message'] = "Your request has not been approved yet";
-echo  $_SESSION['Error-message'];
+            echo $_SESSION['Error-message'];
         }
     } else {
 
-            $_SESSION['Error-message'] = "Incorrect Username/password";
-        echo  $_SESSION['Error-message'];
+        $_SESSION['Error-message'] = "Incorrect Username/password";
+        echo $_SESSION['Error-message'];
 
     }
 } else {
