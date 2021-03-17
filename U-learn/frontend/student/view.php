@@ -3,6 +3,8 @@ session_start();
 if (isset($_SESSION['username'])){
 require "../../Includes/header.php";
 require "../../Includes/navbar/student.php";
+require "../../backend/view-video.php";
+
 ?>
 <div class="bg-gray-100 w-full">
     <form action="">
@@ -10,18 +12,27 @@ require "../../Includes/navbar/student.php";
 
             <div class="border shadow-xl rounded-md w-full bg-white px-12 pb-10">
                 <div>
-                    <h1 class="text-3xl font-semibold my-8">عنوان الدرس</h1>
+                    <h1 class="text-3xl font-semibold my-8">
+                        <?php
+                        echo $_SESSION['video-title'];
+                        ?>
+                    </h1>
                 </div>
                 <div class="w-full md:w-4/5 lg:w-2/3 font-semibold my-8">
                     <p>
-                        الملخص الملخص الملخص الملخص الملخص الملخص الملخص الملخص
-                        الملخص الملخص الملخص الملخص الملخص الملخص الملخص الملخص
+                        <?php
+                        echo $_SESSION['video-details'];
+                        ?>
                     </p>
                 </div>
                 <div class="w-full lg:w-4/5 mx-auto">
                     <video id="player" controls class="w-full">
-                        <source src="/video/video.mp4" type="video/mp4" />
-                        <source src="/video/video.ogg" type="video/ogg" />
+                        <?php
+                        echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                        echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
+
+                        ?>
+
                     </video>
                 </div>
                

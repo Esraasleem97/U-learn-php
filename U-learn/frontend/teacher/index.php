@@ -1,13 +1,15 @@
 <?php
 
 session_start();
+if (isset($_SESSION['username'])) {
+
 require "../../Includes/header.php";
 require "../../Includes/navbar/teacher.php";
 require "../../backend/get-video.php";
 //require "../../backend/delete-video.php";
 
 
-
+    getVideo ("`course-teacher` =" , $_SESSION['userid']);
 ?>
 <div class="bg-gray-100 w-full">
     <form action="">
@@ -64,4 +66,10 @@ require "../../backend/get-video.php";
 <?php
 
 require "../../Includes/footer.php";
+
+} else {
+
+    header("Location:../../frontend/auth/login-form.php");
+    exit();
+}
 ?>

@@ -18,13 +18,12 @@ require "../../Includes/navbar/student.php";
                     <?php
                     $stage = ['المرحلة الأولى','المرحلة الثانية','المرحلة الثالثة','المرحلة الرابعة'];
                     for ($i = 0 ; $i < 4 ; $i++) {
-                    ?>
-
-                    <a href="Book.php" class="stage m-4 w-full sm:w-3/6 md:w-2/5 lg:w-1/3 xl:w-1/5">
-                        <p class="transition duration-300"><?php echo $stage[$i] ?></p>
-                        <i class="fas fa-arrow-left mt-2 text-main-color"></i>
+                    echo "
+                        <a href='Book.php?stage=(".$i+1 .")' class='stage m-4 w-full sm:w-3/6 md:w-2/5 lg:w-1/3 xl:w-1/5'>
+                        <p class='transition duration-300'> $stage[$i] </p>
+                        <i class='fas fa-arrow-left mt-2 text-main-color'></i>
                     </a>
-                    <?php } ?>
+                    "; } ?>
 
                 </div>
             </div>

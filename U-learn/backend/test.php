@@ -1,44 +1,51 @@
 <?php
+session_start();
+if (isset($_SESSION['username'])){
+    require "../Includes/header.php";
+    require "../Includes/navbar/student.php";
+    ?>
+    <div class="bg-gray-100 w-full">
+        <form action="">
+            <div class="container mx-auto my-8">
+                <div class="border shadow-xl rounded-md w-full bg-white px-12 pb-10">
+                    <div>
+                        <h1 class="text-3xl font-semibold my-8">الدروس</h1>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <?php
+                        for ($i = 0 ; $i < 6 ; $i++) {
+                            ?>
+                            <div class="w-1/4 m-4 text-center">
+                                <a href="view.php" class=" ">
+                                    <div class="h-44 bg-gray-500 w-full p-8  flex justify-center items-center my-4 rounded-lg">
+                                        <div class="w-10 h-10 rounded-full bg-blue-700 opacity-90">
+                                            <i class="fas fa-caret-right flex justify-center items-center w-8 h-10  ml-1 mt-0.5 text-4xl text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-xl tracking-wide mb-4">(عنوان الدرس)</p>
+                                        <p>الأحد 20 ديسمبر</p>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <div class=" text-center w-4/6 mx-auto my-36">
+                        <img src="../../layouts/img/login.svg" alt="" class="h-96 mx-auto my-8">
+                        <p class=" text-gray-600">لا يوجد لديك دروس حاليا</p>
+                    </div>
+                </div>
+            </div>
 
-$allowedExts = array("jpg", "jpeg", "gif", "png", "mp3", "mp4", "wma");
-$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+    </div>
+    </form>
 
-if ((($_FILES["file"]["type"] == "video/mp4")
-        || ($_FILES["file"]["type"] == "audio/mp3")
-        || ($_FILES["file"]["type"] == "audio/wma")
-        || ($_FILES["file"]["type"] == "image/pjpeg")
-        || ($_FILES["file"]["type"] == "image/gif")
-        || ($_FILES["file"]["type"] == "image/jpeg"))
+    </div>
+    <?php
+    require "../Includes/footer.php";
 
-    && ($_FILES["file"]["size"] < 20000)
-    && in_array($extension, $allowedExts))
+} else {
 
-{
-    if ($_FILES["file"]["error"] > 0)
-    {
-        echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-    }
-    else
-    {
-        echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-        echo "Type: " . $_FILES["file"]["type"] . "<br />";
-        echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-        echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-
-        if (file_exists("upload/" . $_FILES["file"]["name"]))
-        {
-            echo $_FILES["file"]["name"] . " already exists. ";
-        }
-        else
-        {
-            move_uploaded_file($_FILES["file"]["tmp_name"],
-                "upload/" . $_FILES["file"]["name"]);
-            echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-        }
-    }
-}
-else
-{
-    echo "Invalid file";
+    exit();
 }
 ?>

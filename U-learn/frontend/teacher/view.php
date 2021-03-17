@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (isset($_SESSION['username'])) {
     require "../../Includes/header.php";
@@ -29,6 +28,7 @@ if (isset($_SESSION['username'])) {
                         <video id="player" controls class="w-full">
                             <?php
                             echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
 
                             ?>
                         </video>
