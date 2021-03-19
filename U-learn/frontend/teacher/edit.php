@@ -40,8 +40,8 @@ if (isset($_SESSION['username'])) {
                         </div>
 
                         <div class="input-form my-8">
-                            <label for="student" class="label"><i class="ti ti-lock"></i> اختيار اسم الماد </label>
-                            <select name="course" id="course" >
+                            <select name="course" id="course" required="required" class="input">
+                                <option value=''>اختيار اسم المادة</option>
                                 <option value='<?php
                                 echo $_SESSION['video-course'];
                                 ?>'> ...</option>
@@ -66,22 +66,22 @@ if (isset($_SESSION['username'])) {
 
 <!--                                                <div class="border w-full">-->
 <!--                                                    <main class="container max-w-screen-lg h-full">-->
-<!--<!--                         file upload modal -->-->
+<!--                        file upload modal -->-->
 <!--                                                        <article aria-label="File Upload Modal"-->
 <!--                                                                 class="relative h-full flex flex-col bg-white shadow-xl rounded-md"-->
 <!--                                                                 ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"-->
 <!--                                                                 ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">-->
-<!--<!--                         scroll area -->-->
+<!--                         scroll area -->-->
 <!--                                                                <header-->
 <!--                                                                        class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">-->
 <!--                                                                    <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">-->
 <!--                                                                        <span>قم بتحميل فيديو</span>&nbsp;<span>أو أي ملف</span>-->
 <!--                                                                    </p>-->
 <!--                                                                    <input  type="file" name="media" value="c:/passwords.txt" />-->
-<!--<!--                                                                    <button type="button" id="button"-->-->
-<!--<!--                                                                            class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->-->
-<!--<!--                                                                        تحميل الآن-->-->
-<!--<!--                                                                    </button>-->-->
+<!--                                                                   <button type="button" id="button"-->-->
+<!--                                                                           class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->-->
+<!--                                                                        تحميل الآن-->-->
+<!--                                                                   </button>-->-->
 <!---->
 <!--                                                                </header>-->
 <!--                                                                <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">-->
@@ -99,7 +99,7 @@ if (isset($_SESSION['username'])) {
 <!--                                                        </article>-->
 <!--                                                    </main>-->
 <!--                                                </div>-->
-<!--<!--                         using two similar templates for simplicity in js code -->-->
+<!--                        using two similar templates for simplicity in js code -->-->
 <!--                                                <template id="file-template">-->
 <!--                                                    <li class="block p-1 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 h-24">-->
 <!--                                                        <article tabindex="0"-->

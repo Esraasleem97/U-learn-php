@@ -26,25 +26,23 @@ if (isset($_REQUEST['name'])) {
         $result = mysqli_query($con, $query);
         if ($result) {
 
-            $_SESSION['Error-message'] = "<h3>You are registered successfully  $username.</h3><br/> 
-                  <h3>Please wait accept your request,</h3><br/> 
-                  <h3>Then try to log in.</h3><br/> 
+            $_SESSION['success-message'] = " لقد تم تسجيلك بنجاح$username.<br/> 
+                  من فضلك انتظر حتى يتم قبول طلبك,
+                  ثم حاول تسجيل الدخول.
                   ";
-            echo    $_SESSION['Error-message'];
+//            echo    $_SESSION['Error-message'];
 
             //   header("Location: ../auth/login-form.php");
 
         } else {
-            $_SESSION['Error-message'] =  " <h3>This email has been used before. </h3><br/>";
-            echo    $_SESSION['Error-message'];
+            $_SESSION['Error-message'] =  "البريد الإلكتروني موجود.";
+//            echo  $_SESSION['Error-message'];
 
         }
 
     } else {
 
-        echo "<div class=''>
-                  <h3>Password did not match.</h3><br/>
-                  </div>";
+        $_SESSION['Error-message']= "كلمة المرور غير متطابقة.";
 
     }
 

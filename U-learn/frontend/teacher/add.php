@@ -43,9 +43,8 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                     <!---->
                     <!--                        </div>-->
                     <div class="input-form my-8">
-                        <label for="student" class="label"><i class="ti ti-lock"></i> اختيار اسم الماد </label>
-                        <select name="course" id="course" required="required">
-                            <option value=''> ...</option>
+                        <select name="course" id="course" required="required" class="input">
+                            <option value=''>اختيار اسم المادة</option>
 
                             <?php
                             for ($i = 0; $i < count($_SESSION['courseName']); $i++) {

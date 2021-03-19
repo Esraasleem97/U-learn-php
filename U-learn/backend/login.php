@@ -40,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         } elseif ($Approve == 0) {
 
-            $_SESSION['Error-message'] = "Your request has not been approved yet";
-            echo $_SESSION['Error-message'];
+            $_SESSION['Error-message'] = "لم تتم الموافقة على طلبك حتى الآن";
+//            echo $_SESSION['Error-message'];
         }
     } else {
 
-        $_SESSION['Error-message'] = "Incorrect Username/password";
-        echo $_SESSION['Error-message'];
+        $_SESSION['Error-message'] = "اسم المستخدم او كلمة المرور غير صحيحة";
+//        echo $_SESSION['Error-message'];
 
     }
 } else {
