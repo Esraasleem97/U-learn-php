@@ -72,7 +72,7 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                                             <span>قم بتحميل فيديو</span>&nbsp;
                                             <!--                                                <span>أو أي ملف</span>-->
                                         </p>
-                                        <input type="file" name="media" required="required"/>
+                                        <input type="file" name="media" id="media" required="required"/>
                                         <!--                                            <button type="button" id="button"-->
                                         <!--                                                    class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->
                                         <!--                                                تحميل الآن-->
@@ -81,7 +81,8 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
 
                                     <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
                                     </h1>
-                                    <?php if (empty($_FILES['media']['name'])) { ?>
+
+
                                         <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
                                             <li id="empty"
                                                 class="h-full w-full text-center flex flex-col justify-center items-center">
@@ -92,7 +93,17 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                                             </li>
                                         </ul>
 
-                                    <?php } ?>
+                                        <script>
+                                            const input = document.getElementById('media');
+                                            const log = document.getElementById('gallery');
+
+                                            input.addEventListener('input', updateValue);
+
+                                            function updateValue(e) {
+                                                log.textContent = e.target.value;
+                                            }
+                                        </script>
+
 
                                 </section>
                             </article>

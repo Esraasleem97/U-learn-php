@@ -5,7 +5,6 @@ function getVideo ($column , $condition)
 
     require('db.php');
 
-
 // student request
 
     $query = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE  $column  $condition";
@@ -22,9 +21,8 @@ function getVideo ($column , $condition)
         array_push($_SESSION['videoID'], $row['video-num']);
         array_push($_SESSION['video-course'], $row['course-name']);
         array_push($_SESSION['video-title'], $row['video-name']);
-        array_push($_SESSION['video-details'], $row['video-summary']);
         array_push($_SESSION['video-date'], $row['video-date']);
-
+        array_push($_SESSION['video-details'], $row['video-summary']);
 
     }
 

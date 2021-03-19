@@ -5,8 +5,11 @@ if (isset($_SESSION['username'])) {
     require "../../Includes/header.php";
     require "../../Includes/navbar/teacher.php";
     require "../../backend/view-video.php";
-   // require "../../backend/edit-video.php";
+    require "../../backend/edit-video.php";
+    require "../../backend/get-course.php";
+
     $video = isset($_GET['video']) ? $_GET['video'] : "";
+    getCourse("`course-teacher`= ", $_SESSION['userid']);
 
 
     ?>
@@ -38,8 +41,10 @@ if (isset($_SESSION['username'])) {
 
                         <div class="input-form my-8">
                             <label for="student" class="label"><i class="ti ti-lock"></i> اختيار اسم الماد </label>
-                            <select name="course" id="course"  required="required">
-                                <option value=''> ...</option>
+                            <select name="course" id="course" >
+                                <option value='<?php
+                                echo $_SESSION['video-course'];
+                                ?>'> ...</option>
 
                                 <?php
                                 for ($i = 0; $i < count($_SESSION['courseName']); $i++) {
@@ -50,11 +55,11 @@ if (isset($_SESSION['username'])) {
                         </div>
 
 
-                        <div class="input-form mb-8">
-                            <video id="player" controls class="border w-full">
+                        <div class="w-full lg:w-4/5 mx-auto">
+                            <video id="player" controls class="w-full">
                                 <?php
                                 echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
-
+                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
                                 ?>
                             </video>
                         </div>
@@ -72,11 +77,11 @@ if (isset($_SESSION['username'])) {
 <!--                                                                    <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">-->
 <!--                                                                        <span>قم بتحميل فيديو</span>&nbsp;<span>أو أي ملف</span>-->
 <!--                                                                    </p>-->
-<!--                                                                    <input id="hidden-input" type="file" name="media" value="c:/passwords.txt" />-->
-<!--                                                                    <button type="button" id="button"-->
-<!--                                                                            class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->
-<!--                                                                        تحميل الآن-->
-<!--                                                                    </button>-->
+<!--                                                                    <input  type="file" name="media" value="c:/passwords.txt" />-->
+<!--<!--                                                                    <button type="button" id="button"-->-->
+<!--<!--                                                                            class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->-->
+<!--<!--                                                                        تحميل الآن-->-->
+<!--<!--                                                                    </button>-->-->
 <!---->
 <!--                                                                </header>-->
 <!--                                                                <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">-->
