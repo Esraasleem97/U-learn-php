@@ -20,6 +20,7 @@ if (isset($_SESSION['username'])) {
     }
     ?>
 
+
     <script>
 
         function showReplyForm(self) {
@@ -82,57 +83,79 @@ if (isset($_SESSION['username'])) {
 
                     <div class="w-full md:w-4/5 lg:w-2/3 mx-auto  mt-24">
                         <?php
-                        for ($i = 0; $i < count($_SESSION['comment']); $i++) { ?>
-                            <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md">
-                                <p class=""> <?php echo $_SESSION['comment-user'][$i] . " | " . $_SESSION['comment'][$i] ?></p>
-                                <p class=""> <?php echo "في :" . $_SESSION['comment-date'][$i] ?></p>
-                                <input type="hidden" id="commentID" name="commentID" value="
-                                       <?php echo $_SESSION['commentID'][$i]; ?>" placeholder=" " "/>
+                        for ($i = 0; $i < count($_SESSION['comment']); $i++) {
+                            if ($_SESSION['comment-reply'] [$i] == 0) {
+                                ?>
+                                <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md">
+                                    <p class=""> <?php echo $_SESSION['comment-user'][$i] . " | " . $_SESSION['comment'][$i] ?></p>
+                                    <p class=""> <?php echo "في :" . $_SESSION['comment-date'][$i] ?></p>
+                                    <input type="hidden" id="commentID" name="commentID" value="
+                                       <?php echo $_SESSION['commentID'][$i]; ?>" placeholder=" "/>
 
-                                <?php
-                                if ($_SESSION['comment-userID'][$i] == $_SESSION['userid']) {
-                                    echo "<a href='?do=delete&commentID=" . $_SESSION['commentID'][$i] . "&video=" . $video . "' class='text-red-600'>حذف   </a>";
-                                   } ?>
+                                    <?php
+                                    if ($_SESSION['comment-userID'][$i] == $_SESSION['userid']) {
+                                        echo "<a href='?do=delete&commentID=" . $_SESSION['commentID'][$i] . "&video=" . $video . "' class='text-red-600'>حذف   </a>";
+                                    } ?>
 
-                                <div data-id="<?php echo $_SESSION['commentID'][$i]; ?>"
-                                     onclick="showReplyForm(this);">
-                                    Reply
+                                    <div data-id="<?php echo $_SESSION['commentID'][$i]; ?>" onclick="showReplyForm(this);">
+                                        Reply
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <form action="" method="post" id="form-<?php echo $_SESSION['commentID'][$i]; ?>"  style="display: none;">
+                                    <?php
 
-                            <form action="" method="post" id="form-<?php echo $_SESSION['commentID'][$i]; ?>"
-                                  style="display: none;">
-                                <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">
+                                    for ($y = 0; $y < count($_SESSION['comment']); $y++) {
+                                    if ($_SESSION['comment-reply'] [$y] == $_SESSION['commentID'][$i]){
 
+                                    ?>
+                                    <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">
 
-                                <input type="hidden" id="videoID" name="videoID" value="
-                        <?php echo $_SESSION['video-num']; ?>" placeholder=" " class="input-" "/>
+                                            <p class=""> <?php echo $_SESSION['comment-user'][$y] . " | " . $_SESSION['comment'][$y] ?></p>
+                                            <p class=""> <?php echo "في :" . $_SESSION['comment-date'][$y] ?></p>
+                                            <input type="hidden" id="commentID" name="commentID" value="
+                                       <?php echo $_SESSION['commentID'][$y]; ?>" placeholder=" " "/>
 
-                                <input type="hidden" name="reply_of" value="<?php echo $_SESSION['commentID'][$i]; ?>"
-                                       required>
-                                <p>
-                                    <textarea name="reply" id="reply" cols="20" rows="1" placeholder=" "
+                                            <?php
+                                            if ($_SESSION['comment-userID'][$y] == $_SESSION['userid']) {
+                                                echo "<a href='?do=delete&commentID=" . $_SESSION['commentID'][$y] . "&video=" . $video . "' class='text-red-600'>حذف   </a>";
+                                            } ?>
+
+                                        </div>
+
+                                        <?php }
+                                        } ?>
+
+                                        <div class="input-form  mr-8">
+
+                                            <input type="hidden" id="videoID" name="videoID" value=" <?php echo $_SESSION['video-num']; ?>" placeholder=" " class="input-" "/>
+
+                                            <input type="hidden" name="reply_of"
+                                                   value="<?php echo $_SESSION['commentID'][$i]; ?>"
+                                                   required>
+                                            <p>
+                                    <textarea name="reply" id="reply" cols="50" rows="1" placeholder=" "
                                               class="input"></textarea>
-                                    <label for="details" class="label font-bold">إضافة رد</label>
-                                </p>
+                                                <label for="details" class="label font-bold">إضافة رد</label>
+                                            </p>
 
-                                <p>
-                                    <input type="submit" value="رد" name="do_reply">
-                                </p>
-                                </div>
+                                            <p>
+                                                <input type="submit" value="رد" name="do_reply">
+                                            </p>
+                                        </div>
 
-                            </form>
+                                </form>
 
 
+                                <!--                            -->
+                                <!--                                                    <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">-->
+                                <!--                                                        <p class="">رد المعلم</p>-->
+                                <!--                                                        <a href="" class="text-red-600">حذف</a>-->
+                                <!--                                                    </div>-->
 
-                            <!--                            -->
-                            <!--                                                    <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">-->
-                            <!--                                                        <p class="">رد المعلم</p>-->
-                            <!--                                                        <a href="" class="text-red-600">حذف</a>-->
-                            <!--                                                    </div>-->
-
-                        <?php } ?>
+                            <?php }
+                        } ?>
 
                         <div class="input-form">
                             <textarea name="comment" id="comment" cols="20" rows="3" placeholder=" "
@@ -152,24 +175,6 @@ if (isset($_SESSION['username'])) {
 
 
 
-
-    <script>
-
-        function showReplyForReplyForm(self) {
-            var commentId = self.getAttribute("data-id");
-            var name = self.getAttribute("data-name");
-
-            if (document.getElementById("form-" + commentId).style.display == "") {
-                document.getElementById("form-" + commentId).style.display = "none";
-            } else {
-                document.getElementById("form-" + commentId).style.display = "";
-            }
-
-            document.querySelector("#form-" + commentId + " textarea[name=comment]").value = "@" + name;
-            document.getElementById("form-" + commentId).scrollIntoView();
-        }
-
-    </script>
     <?php
     require "../../Includes/footer.php";
 } else {

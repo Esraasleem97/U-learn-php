@@ -22,21 +22,25 @@ if ($do == 'view') {
         $_SESSION['video-course'] = $row['course-number'];
 
     }
+    //`Comment-reply` = 0 AND
 
-    $query2 = "SELECT * FROM `comments` INNER JOIN `users`ON `userid` = `Comment-user` WHERE 	`Comment-reply` = 0 AND `Comment-video` = " . $video;
+    $query2 = "SELECT * FROM `comments` INNER JOIN `users`ON `userid` = `Comment-user` WHERE 	 `Comment-video` = " . $video;
     $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
     $_SESSION['commentID'] = array();
     $_SESSION['comment'] = array();
     $_SESSION['comment-user'] = array();
     $_SESSION['comment-date'] = array();
     $_SESSION['comment-userID'] = array();
+    $_SESSION['comment-reply'] = array();
 
     while ($row2 = mysqli_fetch_array($result2)) {
+
         array_push($_SESSION['commentID'], $row2['Comment-ID']);
         array_push($_SESSION['comment'], $row2['Comment-content']);
         array_push($_SESSION['comment-user'], $row2['username']);
         array_push($_SESSION['comment-userID'], $row2['Comment-user']);
         array_push($_SESSION['comment-date'], $row2['Comment-date']);
+        array_push($_SESSION['comment-reply'], $row2['Comment-reply']);
 
     }
 

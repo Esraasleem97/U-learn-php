@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
            $query2 = "INSERT INTO  `comments`(`Comment-reply`, `Comment-video`, `Comment-content`, `Comment-date`, `Comment-user`)
               VALUES ( '$commentID' ,'$videoID','$reply','$create_date', '$userID')";
         $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
+            header("Location: ../student/view.php?do=view&video=" . $video);
 
         }
 
