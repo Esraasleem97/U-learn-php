@@ -1,20 +1,26 @@
 <?php
 session_start();
+$_SESSION['Error-message'] = "";
 
 require('../../backend/db.php');
 require "../../Includes/header.php";
 require "../../backend/login.php";
-
 ?>
 
 <div class="bg-gray-100 w-full min-h-screen flex">
     <div class="container m-auto px-8">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-            <div class="text-red-500 bg-red-100 mt-4 border-r-4 border-red-500 py-2 px-4 mx-auto w-full lg:w-7/12">
-                <?php echo $_SESSION['Error-message']; ?>
-            </div>
 
+            <div>
+                <?php
+                if (!empty($_SESSION['Error-message'])) { ?>
+                <p class="text-red-500 bg-red-100 mt-4 border-r-4 border-red-500 py-2 px-4 mx-auto w-full lg:w-7/12">
+                    <?php echo $_SESSION['Error-message'];
+                    echo "</p>";
+                    }
+                    ?>
+            </div>
             <div></div>
             <form action="" method="post"
                   class="mx-auto rounded-lg shadow-xl overflow-hidden p-6 space-y-10 bg-white w-full lg:w-7/12">

@@ -7,7 +7,7 @@ function getVideo ($column , $condition)
 
 // student request
 
-    $query = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE  $column  $condition";
+    $query = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE `Validity` = 1 AND $column  $condition";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
     $_SESSION['rowcount'] = $rowcount;

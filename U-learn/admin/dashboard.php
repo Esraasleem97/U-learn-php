@@ -1,13 +1,23 @@
 <?php
 session_start();
-if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
+if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
 
     require "../Includes/header.php";
     require "../Includes/navbar/admin.php";
     require "../backend/General-report.php";
     require "../backend/get-requests.php";
-//require "../backend/accept-reject-requests.php";
-    require "../backend/db.php";
+    require "../backend/accept-reject-requests.php";
+    // require "../backend/db.php";
+
+    $email = isset($_GET['email']) ? $_GET['email'] : "";
+    $do = isset($_GET['do']) ? $_GET['do'] : "";
+    $Approve ="";
+    if ($do == "accept")
+        $Approve = 1;
+    elseif ($do == "reject")
+        $Approve = 2;
+
+        acceptuser($email , $Approve);
 
     ?>
     <div class="bg-gray-100 w-full">
@@ -77,14 +87,14 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
                     </h1>
 
                     <?php
-                    for ($i = 0; $i < count($_SESSION['student']); $i++) {
+                    for ($i = 0; $i < count($_SESSION['student-email']); $i++) {
                         ?>
                         <div id="demo"
                              class="border border-r-8 border-sub-color flex justify-between py-4 px-8 rounded-3xl my-4">
 
                             <p>
                                 <?php
-                                $userEmail = $_SESSION['student'][$i];
+                                $userEmail = $_SESSION['student-email'][$i];
                                 echo $userEmail;
                                 ?>
 
@@ -93,8 +103,8 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
                             <div class="text-sm">
                                 <?php
                                 echo "
-                         <a href='../backend/accept-reject-requests.php?do=accept&email=" . $userEmail . "'  class='text-green-800 duration-300 hover:border-green-800'>قبول | </a>
-                         <a href='../backend/accept-reject-requests.php?do=rejict&email=" . $userEmail . "'  class='text-red-700 duration-300 hover:border-red-800'>رفض </a>"
+                         <a href='?do=accept&email=" . $userEmail . "'  class='text-green-800 duration-300 hover:border-green-800'>قبول | </a>
+                         <a href='?do=reject&email=" . $userEmail . "'  class='text-red-700 duration-300 hover:border-red-800'>رفض </a>"
 
                                 ?>
                             </div>
@@ -110,7 +120,7 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
                     </h1>
                     <?php
                     for ($i = 0;
-                         $i < count($_SESSION['teacher']);
+                         $i < count($_SESSION['teacher-email']);
                          $i++) {
                         //  echo '<td>' . $_SESSION['student'][$i] . '</td>';
 
@@ -118,16 +128,16 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
                         <div class="border border-r-8 border-sub-color flex justify-between py-4 px-8 rounded-3xl my-4">
                             <p>
                                 <?php
-                                $userEmail = $_SESSION['teacher'][$i];
-                                echo $_SESSION['teacher'][$i];
+                                $userEmail = $_SESSION['teacher-email'][$i];
+                                echo $_SESSION['teacher-email'][$i];
                                 ?>
                             </p>
                             <div class="text-sm">
 
                                 <?php
                                 echo "
-                         <a href='../backend/accept-reject-requests.php?do=accept&email=" . $userEmail . "'  class='text-green-800 duration-300 hover:border-green-800'>قبول | </a>
-                         <a href='../backend/accept-reject-requests.php?do=rejict&email=" . $userEmail . "'  class='text-red-700 duration-300 hover:border-red-800'>رفض </a>"
+                         <a href='?do=accept&email=" . $userEmail . "'  class='text-green-800 duration-300 hover:border-green-800'>قبول | </a>
+                         <a href='?do=rejict&email=" . $userEmail . "'  class='text-red-700 duration-300 hover:border-red-800'>رفض </a>"
 
                                 ?>
 
@@ -141,10 +151,6 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
 
 
     <?php
-
-
-
-
 
     require "../Includes/footer.php";
 } else {

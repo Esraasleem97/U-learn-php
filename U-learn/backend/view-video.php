@@ -4,9 +4,11 @@ require('db.php');
 $video = isset($_GET['video']) ? $_GET['video'] : "";
 $do = isset($_GET['do']) ? $_GET['do'] : "";
 
+
+
 if ($do == 'view') {
 
-    $query = "SELECT * FROM `video` WHERE `Validity` = 1  AND `video-num` =" . $video;
+    $query = "SELECT * FROM `video` WHERE  `video-num` =" . $video;
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
     $_SESSION['rowcount'] = $rowcount;
