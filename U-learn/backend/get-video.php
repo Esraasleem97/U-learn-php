@@ -3,6 +3,7 @@
 function getVideo ($column , $condition)
 {
 
+
     require('db.php');
 
 // student request

@@ -41,7 +41,7 @@ require "../../backend/get-video.php";
                             <td>". $_SESSION['video-title'][$i] ."</td>
                             <td>". $_SESSION['video-details'][$i] ."</td>
                             <td>
-                                <a href='view.php?do=view&video=".$_SESSION['videoID'][$i]."' class='btn btn-info'>عرض</a>
+                                <a href='../student/view.php?do=view&video=".$_SESSION['videoID'][$i]."' class='btn btn-info'>عرض</a>
                                 <a href='edit.php?do=view&video=".$_SESSION['videoID'][$i]."' class='btn btn-success'>تعديل</a>
                                 <a href='../../backend/delete-video.php?do=delete&video=".$_SESSION['videoID'][$i]."' class='btn btn-danger'>حذف</a>
                             </td>

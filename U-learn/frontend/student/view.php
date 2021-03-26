@@ -25,10 +25,10 @@ if (isset($_SESSION['username'])) {
 
         function showReplyForm(self) {
             var commentId = self.getAttribute("data-id");
-            if (document.getElementById("form-" + commentId).style.display == "") {
-                document.getElementById("form-" + commentId).style.display = "none";
-            } else {
+            if (document.getElementById("form-" + commentId).style.display == "none") {
                 document.getElementById("form-" + commentId).style.display = "";
+            } else {
+                document.getElementById("form-" + commentId).style.display = "none";
             }
         }
 
@@ -102,7 +102,6 @@ if (isset($_SESSION['username'])) {
                                     </div>
 
                                 </div>
-
                                 <form action="" method="post" id="form-<?php echo $_SESSION['commentID'][$i]; ?>"  style="display: none;">
                                     <?php
 
@@ -115,7 +114,7 @@ if (isset($_SESSION['username'])) {
                                             <p class=""> <?php echo $_SESSION['comment-user'][$y] . " | " . $_SESSION['comment'][$y] ?></p>
                                             <p class=""> <?php echo "في :" . $_SESSION['comment-date'][$y] ?></p>
                                             <input type="hidden" id="commentID" name="commentID" value="
-                                       <?php echo $_SESSION['commentID'][$y]; ?>" placeholder=" " "/>
+                                       <?php echo $_SESSION['commentID'][$y]; ?>" placeholder=""/>
 
                                             <?php
                                             if ($_SESSION['comment-userID'][$y] == $_SESSION['userid']) {
@@ -147,12 +146,6 @@ if (isset($_SESSION['username'])) {
 
                                 </form>
 
-
-                                <!--                            -->
-                                <!--                                                    <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">-->
-                                <!--                                                        <p class="">رد المعلم</p>-->
-                                <!--                                                        <a href="" class="text-red-600">حذف</a>-->
-                                <!--                                                    </div>-->
 
                             <?php }
                         } ?>

@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // يختبر اذا تم الموافقة عليه أم لا
         if ($Approve == 1) {
 
-            $query2 = "UPDATE `users` SET `LastSeen`= '$create_date'  WHERE `userid` = " . $_SESSION['userid'];
-            $result = mysqli_query($con, $query2) or die(mysqli_error($con));
+//            $query2 = "UPDATE `users` SET `LastSeen`= '$create_date'  WHERE `userid` = " . $_SESSION['userid'];
+//            $result = mysqli_query($con, $query2) or die(mysqli_error($con));
 
             if ($GroupID == 1) {
                 header("Location: ../student/Stage.php");
