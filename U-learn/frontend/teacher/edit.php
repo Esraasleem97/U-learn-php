@@ -41,7 +41,7 @@ if (isset($_SESSION['username'])) {
 
                         <div class="input-form my-8">
                             <select name="course" id="course" required="required" class="input">
-                                <option value=''>اختيار اسم المادة</option>
+
                                 <option value='<?php
                                 echo $_SESSION['video-course'];
                                 ?>'> ...</option>

@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // إحضار المعلومات من الفورم
 
 
-    $create_date = date("Y-m-d h:m:s");
+    $create_date = date("Y-m-d H:i:s");
     $userID = $_SESSION['userid'];
 
 

@@ -6,7 +6,6 @@ require('db.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $create_date = date("Y-m-d H:i:s");
 
     // اشيك اذا موجود اليوزر بالداتا بيس
     $query = "SELECT * FROM `users` WHERE `email` =  '$email' AND `password`= '$password'  ";
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $Approve = $row['user-Approve'];
         $userid = intval($row['userid']);
         $_SESSION['userid'] = $userid;
-        $GroupID = $row['GroupID'];
+        $_SESSION['GroupID'] = $row['GroupID'];
 
     }
     // اذا عاد صف واحد معناه أنه اليوزر موجود وإلا سوف يخبره أن الاسم أو الباسوورد خاطء
@@ -27,14 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // يختبر اذا تم الموافقة عليه أم لا
         if ($Approve == 1) {
 
-//            $query2 = "UPDATE `users` SET `LastSeen`= '$create_date'  WHERE `userid` = " . $_SESSION['userid'];
-//            $result = mysqli_query($con, $query2) or die(mysqli_error($con));
 
-            if ($GroupID == 1) {
+
+            if ($_SESSION['GroupID'] == 1) {
                 header("Location: ../student/Stage.php");
-            } elseif ($GroupID == 2) {
+            } elseif ($_SESSION['GroupID'] == 2) {
                 header("Location: ../teacher/index.php");
-            } elseif ($GroupID == 3) {
+            } elseif ($_SESSION['GroupID'] == 3) {
                 header("Location: ../../admin/dashboard.php");
             }
 

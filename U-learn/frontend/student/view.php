@@ -4,7 +4,11 @@ if (isset($_SESSION['username'])) {
 
 
     require "../../Includes/header.php";
-    require "../../Includes/navbar/student.php";
+    if ($_SESSION['GroupID'] == 1) {
+        require "../../Includes/navbar/student.php";
+    } elseif ($_SESSION['GroupID'] == 2) {
+        require "../../Includes/navbar/teacher.php";
+    }
     require "../../backend/view-video.php";
     require "../../backend/comments.php";
 
@@ -89,7 +93,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md">
                                     <div>
                                         <p class=""> <?php echo $_SESSION['comment-user'][$i] . " | " . $_SESSION['comment'][$i] ?></p>
-                                        <p class="text-gray-500 text-xs mt-4"> <?php echo "في :" . $_SESSION['comment-date'][$i] ?></p>
+                                        <p class="text-gray-500 text-xs mt-2"> <?php echo "في :" . $_SESSION['comment-date'][$i] ?></p>
                                     </div>
                                     <input type="hidden" id="commentID" name="commentID" value="
                                        <?php echo $_SESSION['commentID'][$i]; ?>" placeholder=" "/>
@@ -97,13 +101,14 @@ if (isset($_SESSION['username'])) {
                                         <?php
                                         if ($_SESSION['comment-userID'][$i] == $_SESSION['userid']) {
                                             echo "<a href='?do=delete&commentID=" . $_SESSION['commentID'][$i] . "&video=" . $video . "' class='text-red-600'>حذف   </a>";
+                                            echo "<span class='mx-1'>|</span>";
+
                                         } ?>
 
                                         <div class="text-blue-800 cursor-pointer"
                                              onclick="showReplyForm(this);"
                                              data-id="<?php echo $_SESSION['commentID'][$i]; ?>"
-                                             >
-                                            <span class="mx-1">|</span>
+                                        >
                                             الرد
                                         </div>
                                     </div>
@@ -120,7 +125,7 @@ if (isset($_SESSION['username'])) {
                                             <div class="text-sm border border-r-8 border-blue-900 py-4 px-4 my-8 flex justify-between items-center rounded-md mr-8">
                                                 <div>
                                                     <p class=""> <?php echo $_SESSION['comment-user'][$y] . " | " . $_SESSION['comment'][$y] ?></p>
-                                                    <p class="text-gray-500 text-xs mt-4"> <?php echo "في :" . $_SESSION['comment-date'][$y] ?></p>
+                                                    <p class="text-gray-500 text-xs mt-2"> <?php echo "في :" . $_SESSION['comment-date'][$y] ?></p>
                                                 </div>
                                                 <input type="hidden" id="commentID" name="commentID" value="
                                        <?php echo $_SESSION['commentID'][$y]; ?>" placeholder=""/>
@@ -129,7 +134,6 @@ if (isset($_SESSION['username'])) {
                                                 if ($_SESSION['comment-userID'][$y] == $_SESSION['userid']) {
                                                     echo "<a href='?do=delete&commentID=" . $_SESSION['commentID'][$y] . "&video=" . $video . "' class='text-red-600'>حذف   </a>";
                                                 } ?>
-
                                             </div>
 
                                         <?php }

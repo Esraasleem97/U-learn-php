@@ -22,7 +22,7 @@ function getnotifications($condtion)
 FROM `video` INNER JOIN `course`ON `course-number` = `course-num`
 INNER JOIN `comments` ON `comments`.`Comment-video` = `video`.`video-num`
 INNER JOIN `users` ON `users`.`userid` = `comments`.`Comment-user`
-WHERE `video`.`Validity` = 1 " . $condtion;
+WHERE `video`.`Validity` = 1 " . $condtion ." ORDER BY `comments`.`Comment-date` DESC";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
     $_SESSION['rowcount'] = $rowcount;
@@ -42,5 +42,20 @@ WHERE `video`.`Validity` = 1 " . $condtion;
         array_push($_SESSION['comment_date'], $row['Comment-date']);
 
     }
+    $query3 = "SELECT `LastSeen` FROM `users` WHERE `userid`= " . $_SESSION['userid'];
+    $result3 = mysqli_query($con, $query3) or die(mysqli_error($con));
+    while ($row = mysqli_fetch_assoc($result3)) {
+        $_SESSION['LastSeen'] = $row['LastSeen'];}
 
+    $create_date = date("Y-m-d H:i:s");
+    $query2 = "UPDATE `users` SET `LastSeen`= '$create_date'  WHERE `userid` = " . $_SESSION['userid'];
+     $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
+
+
+  //  $query4 = "SELECT `LastSeen` FROM `users` WHERE `userid`= " . $_SESSION['userid'];
+    //$result4 = mysqli_query($con, $query4) or die(mysqli_error($con));
+    //while ($row = mysqli_fetch_assoc($result4)) {
+      //  $_SESSION['LastSeen2'] = $row['LastSeen'];}
+
+   // echo "قبل". $_SESSION['LastSeen'] . "<br> بعد  " .  $_SESSION['LastSeen2'];
 }

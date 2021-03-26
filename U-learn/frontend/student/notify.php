@@ -16,7 +16,9 @@ if (isset($_SESSION['username'])) {
         }
     }
  //   echo $commentID;
-   $condtion = "AND `Comment-reply` IN (".$commentID.")";
+//    $condtion = "AND `Comment-reply` IN (".$commentID.")";
+
+    $condtion = "AND `Comment-reply` IN (".$commentID.")";
     getnotifications($condtion)
     ?>
     <div class="bg-gray-100 w-full">
@@ -37,17 +39,30 @@ if (isset($_SESSION['username'])) {
                             <?php
                             for ($i = 0; $i < $_SESSION['rowcount']; $i++) {
 
-                                if ($_SESSION['comment_reply'][$i] == 0) {
-                                    $notif = " علق " . $_SESSION['comment_user'][$i] . " على فيديو " . $_SESSION['video_name'][$i] . " لمادة " . $_SESSION['course_name'][$i] . " في " . $_SESSION['comment_date'][$i];
-                                } else {
-                                    $notif = " رد " . $_SESSION['comment_user'][$i] . " على تعليقك على فيديو " . $_SESSION['video_name'][$i] . " لمادة " . $_SESSION['course_name'][$i] . " في " . $_SESSION['comment_date'][$i];
-                                } ?>
+                                    $notif = " رد " . $_SESSION['comment_user'][$i] . " على تعليقك على فيديو " . $_SESSION['video_name'][$i] . " لمادة " . $_SESSION['course_name'][$i] ;
 
-                                <a href="" class=" my-8">
-                                    <div class="shadow-lg bg-white py-4 px-4 my-6 rounded-lg">
-                                        <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>  </p>
-                                    </div>
-                                </a>
+                                $video = $_SESSION['videoID'][$i];
+                                $comm_Date = $_SESSION['comment_date'][$i];
+                                if (strtotime($comm_Date) > strtotime($_SESSION['LastSeen'])) { ?>
+
+                                    <a href="../student/view.php?do=view&video=<?php echo $video ?>" class=" my-8">
+                                        <div class="shadow-lg bg-white py-4 px-4 my-6 rounded-lg  bg bg-r-8 bg-blue-200">
+                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>  </p>
+                                            <p class="text-gray-500 text-xs mt-2 mx-8"> <?php echo "في :" . $_SESSION['comment_date'][$i] ?></p>
+
+                                        </div>
+                                    </a>
+                                <?php    } else { ?>
+
+                                    <a href="../student/view.php?do=view&video=<?php echo $video ?>" class=" my-8">
+                                        <div class="shadow-lg bg-white py-4 px-4 my-6 rounded-lg  bg bg-r-8 ">
+                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>  </p>
+                                            <p class="text-gray-500 text-xs mt-2 mx-8"> <?php echo "في :" . $_SESSION['comment_date'][$i] ?></p>
+
+                                        </div>
+                                    </a>
+                                <?php     }   ?>
+
                             <?php } ?>
 
 
