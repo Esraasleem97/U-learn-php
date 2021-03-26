@@ -19,7 +19,7 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
 
     acceptvideo($video , $Approve)
     ?>
-    <div class="bg-gray-100 w-full">
+    <div class="bg-gray-100 w-full min-h-screen">
         <form action="">
             <div class="container mx-auto  my-8">
                 <div class="border shadow-xl rounded-md w-full bg-white px-12 pb-10">

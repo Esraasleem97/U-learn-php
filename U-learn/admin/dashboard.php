@@ -20,15 +20,15 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
         acceptuser($email , $Approve);
 
     ?>
-    <div class="bg-gray-100 w-full">
-        <div class="container mx-auto my-8">
+    <div class="bg-gray-100 w-full min-h-screen">
+        <div class="w-full lg:w-11/12 mx-auto my-8">
             <h1 class="text-3xl text-blue-900 font-semibold tracking-wider mb-12 px-4 md:px-6 lg:px-12">
                 التقرير العام
             </h1>
             <div class="flex flex-wrap justify-around">
 
                 <!--عدد الأساتذة-->
-                <div class="border shadow-2xl rounded-xl w-1/4 py-8 px-12 border-r-8 border-sub-color">
+                <div class="border shadow-2xl rounded-xl w-full sm:w-2/5 md:w-1/4 py-8 px-12 border-r-8 border-sub-color mt-4">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="font-semibold text-3xl text-center">
@@ -38,14 +38,14 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                                 ?>
 
                             </p>
-                            <p class="font-medium my-4 text-sm tracking-wider">عدد الأساتذة</p>
+                            <p class="font-medium my-4 text-sm tracking-wider">الأساتذة</p>
                         </div>
                         <img src="../layouts/img/teaching.svg" alt="" class="w-32">
                     </div>
                 </div>
 
                 <!--عدد الطلبة-->
-                <div class="border shadow-2xl rounded-xl w-1/4 py-8 px-12 border-r-8 border-sub-color">
+                <div class="border shadow-2xl rounded-xl w-full sm:w-2/5 md:w-1/4 py-8 px-12 border-r-8 border-sub-color mt-4">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="font-semibold text-3xl text-center"> <?php
@@ -53,7 +53,7 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                                 echo $_SESSION['studentnum'] . "<br>";
                                 ?>
                             </p>
-                            <p class="font-medium my-4 text-sm tracking-wider">عدد الطلبة
+                            <p class="font-medium my-4 text-sm tracking-wider">الطلبة
 
                             </p>
                         </div>
@@ -62,7 +62,7 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                 </div>
 
                 <!--عدد الدروس-->
-                <div class="border shadow-2xl rounded-xl w-1/4 py-8 px-12 border-r-8 border-sub-color">
+                <div class="border shadow-2xl rounded-xl w-full sm:w-2/5 md:w-1/4 py-8 px-12 border-r-8 border-sub-color mt-4">
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="font-semibold text-3xl text-center">
@@ -72,16 +72,16 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                                 ?>
 
                             </p>
-                            <p class="font-medium my-4 text-sm tracking-wider">عدد الدروس</p>
+                            <p class="font-medium my-4 text-sm tracking-wider">الدروس</p>
                         </div>
                         <img src="../layouts/img/login.svg" alt="" class="w-32">
                     </div>
                 </div>
             </div>
 
-            <div class="flex justify-between my-12 w-11/12">
+            <div class="flex flex-wrap justify-between my-12 w-11/12">
                 <!--الطلبة الجدد-->
-                <div class="w-2/5">
+                <div class="w-full md:w-2/5">
                     <h1 class="text-3xl text-blue-900 font-semibold tracking-wider mb-12 px-4 md:px-6 lg:px-12">
                         الطلبة الجدد
                     </h1>
@@ -114,7 +114,7 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
 
 
                 <!--الأساتذة الجدد-->
-                <div class="w-2/5">
+                <div class="w-full md:w-2/5">
                     <h1 class="text-3xl text-blue-900 font-semibold tracking-wider mb-12 px-4 md:px-6 lg:px-12">
                         الأساتذة الجدد
                     </h1>
