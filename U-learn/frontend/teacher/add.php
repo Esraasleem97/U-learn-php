@@ -8,7 +8,6 @@ require "../../backend/add-video.php";
 
 getCourse("`course-teacher`= ", $_SESSION['userid']);
 
-
 ?>
 <div class="bg-gray-100 w-full">
     <form action="" method="post" enctype="multipart/form-data">
@@ -29,19 +28,7 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                         <label for="details" class="label font-bold">الملخص</label>
                     </div>
 
-                    <!--                        <div class="input-form my-8" >-->
-                    <!---->
-                    <!--                            <input type="radio" id="stage1" name="stage" value="stage1">-->
-                    <!--                            <label for="stage1"> المرحلة الأولى </label>-->
-                    <!--                            <input type="radio" id="stage2" name="stage" value="stage2">-->
-                    <!--                            <label for="stage2">المرحلة الثانية </label>-->
-                    <!--                            <input type="radio" id="stage3" name="stage" value="stage3">-->
-                    <!--                            <label for="stage3"> المرحلة الثالثة </label>-->
-                    <!--                            <input type="radio" id="stage4" name="stage" value="stage4">-->
-                    <!--                            <label for="stage4">المرحلة الرابعة </label>-->
-                    <!--                            <label for="student" class="label"><i class="ti ti-lock"></i> المرحلة الدراسية </label>-->
-                    <!---->
-                    <!--                        </div>-->
+
                     <div class="input-form my-8">
                         <select name="course" id="course" required="required" class="input">
                             <option value=''>اختيار اسم المادة</option>
@@ -69,13 +56,9 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                                             class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                                         <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
                                             <span>قم بتحميل فيديو</span>&nbsp;
-                                            <!--                                                <span>أو أي ملف</span>-->
                                         </p>
-                                        <input type="file" name="media" id="media" required="required"/>
-                                        <!--                                            <button type="button" id="button"-->
-                                        <!--                                                    class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">-->
-                                        <!--                                                تحميل الآن-->
-                                        <!--                                            </button>-->
+                                        <input type="file" name="media" id="media"  style="color:transparent; width:90px;" class="file_multi_video" accept="video/*" required="required"/>
+
                                     </header>
 
                                     <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
@@ -100,6 +83,7 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
 
                                             function updateValue(e) {
                                                 log.textContent = e.target.value;
+
                                             }
                                         </script>
 
@@ -193,6 +177,9 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
         </div>
     </form>
 </div>
+
+
+
 <?php
 
 require "../../Includes/footer.php";
