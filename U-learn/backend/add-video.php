@@ -5,9 +5,7 @@ require "../../backend/db.php";
 // When form submitted, insert values into the database.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // إحضار المعلومات من الفورم
     $allowedExts = array("mp3", "mp4", "wma" , "webm" );
-
 
     $title = $_POST['title'];
     $details = $_POST['details'];
@@ -18,16 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $create_date = date("Y-m-d");
 
     $extension = pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION);
-
-
     if (in_array($extension, $allowedExts)) {
-
         $mediatoDB = rand(0, 100) . $_FILES['media']['name'];
         move_uploaded_file($mediaTmp, "../../videos/" . $mediatoDB);
-
-
-        //  echo "title $title  details $details course $course media " . $_FILES['media']['name'];
-
         $query = "INSERT INTO `video`(`video-name`, `course-number`, `video-summary`, `video-content`, `video-date`, `Validity`)
                  VALUES ('$title','$course','$details','$mediatoDB','$create_date',1)";
         $result = mysqli_query($con, $query);

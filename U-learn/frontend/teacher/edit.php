@@ -14,8 +14,7 @@ if (isset($_SESSION['username'])) {
 
     ?>
     <div class="bg-gray-100 w-full">
-        <?php echo "<form action='../../backend/edit-video.php?video=" . $video . "' method='post' enctype='multipart/form-data'
->" ?>
+        <?php echo "<form action='' method='post' enctype='multipart/form-data'>" ?>
         <div class="container mx-auto my-8">
             <div class="border shadow-xl rounded-md w-full bg-white px-12 pb-10">
                 <div>
@@ -72,7 +71,7 @@ if (isset($_SESSION['username'])) {
                                         <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
                                             <span>قم بتحميل فيديو</span>&nbsp;
                                         </p>
-                                        <input type="file" name="media" id="media" style="color:transparent; width:90px;" />
+                                        <input type="file" name="media" id="media"  style="color:transparent; width:90px;" class="file_multi_video" accept="video/*" />
 
                                     </header>
 
@@ -83,31 +82,39 @@ if (isset($_SESSION['username'])) {
                                     <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
                                         <li id="empty"
                                             class="h-full w-full text-center flex flex-col justify-center items-center">
-                                                <video id="player" controls class="w-full">
-                                                    <?php
-                                                    echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
-                                                    echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
-                                                    ?>
-                                                </video>
-
-                                            <video width="400" controls>
-                                                <source src="mov_bbb.mp4" id="video_here">
-                                                Your browser does not support HTML5 video.
+                                            <video id="player" controls class="w-full">
+                                                <?php
+                                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
+                                                ?>
                                             </video>
 
                                         </li>
-                                    </ul>
 
+
+
+                                    </ul>
+                                    <video class="w-full" id="view" style="display: none;" controls >
+                                        <source src="mov_bbb.mp4" id="video_here">
+                                        Your browser does not support HTML5 video.
+                                    </video>
                                     <script>
+
+
                                         const input = document.getElementById('media');
                                         const log = document.getElementById('gallery');
 
                                         input.addEventListener('input', updateValue);
 
                                         function updateValue(e) {
-                                            log.textContent = e.target.value;
-                                            document.getElementById('output').innerHTML = lengthOfName;
+                                            log.style.display = "none";
+                                            $(document).on("change", ".file_multi_video", function(evt) {
+                                                document.getElementById("view").style.display = "block";
 
+                                                var $source = $('#video_here');
+                                                $source[0].src = URL.createObjectURL(this.files[0]);
+                                                $source.parent()[0].load();
+                                            });
                                         }
                                     </script>
 

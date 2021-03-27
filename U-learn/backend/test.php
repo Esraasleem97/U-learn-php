@@ -5,7 +5,7 @@
     Your browser does not support HTML5 video.
 </video>
 
-<input type="file" name="file[]" class="file_multi_video" accept="video/*">
+<input type="file" name="media" class="file_multi_video" accept="video/*">
 
 <script>
 
@@ -19,3 +19,4 @@
 
 
 </script>
+

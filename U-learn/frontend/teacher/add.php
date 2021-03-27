@@ -72,18 +72,33 @@ getCourse("`course-teacher`= ", $_SESSION['userid']);
                                                      src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png"
                                                      alt="no data"/>
                                                 <span class="text-small text-gray-500">لم يتم تحديد ملفات</span>
-                                            </li>
-                                        </ul>
 
+                                            </li>
+
+
+
+                                        </ul>
+                                    <video class="w-full" id="view" style="display: none;" controls >
+                                        <source src="mov_bbb.mp4" id="video_here">
+                                        Your browser does not support HTML5 video.
+                                    </video>
                                         <script>
+
+
                                             const input = document.getElementById('media');
                                             const log = document.getElementById('gallery');
 
                                             input.addEventListener('input', updateValue);
 
                                             function updateValue(e) {
-                                                log.textContent = e.target.value;
+                                                log.style.display = "none";
+                                                $(document).on("change", ".file_multi_video", function(evt) {
+                                                    document.getElementById("view").style.display = "block";
 
+                                                    var $source = $('#video_here');
+                                                    $source[0].src = URL.createObjectURL(this.files[0]);
+                                                    $source.parent()[0].load();
+                                                });
                                             }
                                         </script>
 
