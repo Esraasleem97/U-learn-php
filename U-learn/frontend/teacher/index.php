@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
 
 require "../../Includes/header.php";
 require "../../Includes/navbar/teacher.php";
@@ -33,6 +33,8 @@ require "../../backend/get-video.php";
                     </thead>
                     <tbody>
                     <?php
+
+                    // عرض الفيديوهات التي قام الاستاذ بتحميلها وتمت الموافقه عليها من المسؤول
                     for ($i = 0; $i < count($_SESSION['videoID']); $i++) {
 
                       echo " <tr>

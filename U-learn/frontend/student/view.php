@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
 
 
     require "../../Includes/header.php";
@@ -17,8 +17,7 @@ if (isset($_SESSION['username'])) {
     $commentID = isset($_GET['commentID']) ? $_GET['commentID'] : "";
 
     if ($do == "delete") {
-        $video = isset($_GET['video']) ? $_GET['video'] : "";
-
+// استدعاء فنكشن حذف الكومينت
         deleteComment($commentID, $video);
 
     }
@@ -45,7 +44,6 @@ if (isset($_SESSION['username'])) {
                     <div>
                         <h1 class="text-3xl font-semibold my-8">
                             <?php
-
                             echo $_SESSION['video-title'];
                             ?>
                         </h1>
@@ -89,6 +87,9 @@ if (isset($_SESSION['username'])) {
 
                     <div class="w-full md:w-4/5 lg:w-2/3 mx-auto  mt-24">
                         <?php
+
+                        // عرض التعليقات
+
                         for ($i = 0; $i < count($_SESSION['comment']); $i++) {
                             if ($_SESSION['comment-reply'] [$i] == 0) {
                                 ?>
@@ -119,6 +120,7 @@ if (isset($_SESSION['username'])) {
                                 <form action="" method="post" id="form-<?php echo $_SESSION['commentID'][$i]; ?>"
                                       style="display: none;">
                                     <?php
+                                    // عرض الردود على التعليقات
 
                                     for ($y = 0; $y < count($_SESSION['comment']); $y++) {
                                         if ($_SESSION['comment-reply'] [$y] == $_SESSION['commentID'][$i]) {

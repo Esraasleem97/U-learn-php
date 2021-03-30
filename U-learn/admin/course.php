@@ -16,8 +16,12 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
         $Approve = 1;
     elseif ($do == "reject")
         $Approve = 2;
-
+// الموافقه على الدرس أو رفضه
     acceptvideo($video , $Approve)
+
+
+   // عرض الدروس التي تم إضافتها من قبل المعلم
+
     ?>
     <div class="bg-gray-100 w-full min-h-screen">
         <form action="">

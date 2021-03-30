@@ -2,7 +2,7 @@
 require('db.php');
 
 
-// student request
+// get student request
 $query = "SELECT * FROM `users` WHERE `user-Approve`= 0  AND `GroupID` = 1";
 $result = mysqli_query($con, $query) or die(mysqli_error($con));
 $rowcount = mysqli_num_rows($result);
@@ -17,7 +17,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 
-// teacher request
+// get teacher request
 $query2 = "SELECT * FROM `users` WHERE `user-Approve`= 0  AND `GroupID` = 2";
 $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
 $rowcount2 = mysqli_num_rows($result2);
@@ -30,6 +30,8 @@ while ($row = mysqli_fetch_array($result2)) {
     array_push($_SESSION['teacher-email'], $row['email']);
 
 }
+
+// get video request
 
 $query3 = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE  Validity = 0";
 $result3 = mysqli_query($con, $query3) or die(mysqli_error($con));

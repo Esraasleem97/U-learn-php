@@ -3,16 +3,13 @@
 function getVideo ($column , $condition)
 {
 
-
     require('db.php');
-
-// student request
+// إحضار الفيديوهات من قاعدة البيانات حسب الشروط
 
     $query = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE `Validity` = 1 AND $column  $condition";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
     $_SESSION['rowcount'] = $rowcount;
-//echo $rowcount;
     $_SESSION['videoID'] = array();
     $_SESSION['video-course'] = array();
     $_SESSION['video-title'] = array();

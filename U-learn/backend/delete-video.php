@@ -1,6 +1,7 @@
 <?php
 require('db.php');
 
+// حذف الفيديو عندما يختار الاستاذ حذف
 $video = isset($_GET['video']) ? $_GET['video'] : "";;
 $do = isset($_GET['do']) ? $_GET['do'] : "";;
 

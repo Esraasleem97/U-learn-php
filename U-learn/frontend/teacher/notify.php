@@ -1,12 +1,14 @@
 <?php
 
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
     require "../../Includes/header.php";
     require "../../Includes/navbar/teacher.php";
     require "../../backend/notifications.php";
     $userID = $_SESSION['userid'];
     $condtion = "AND `course-teacher` = " . $userID . " AND `comments`.`Comment-user` != " . $userID;
+    // إحضار جميع التعليقات على الدروس التي يعطيها الاستاذ
+
     getnotifications($condtion);
 
 
@@ -36,25 +38,28 @@ if (isset($_SESSION['username'])) {
                                 }
                                 $video = $_SESSION['videoID'][$i];
                                 $comm_Date = $_SESSION['comment_date'][$i];
+                                // اذا كان التعليق بعد أخر ظهور سوف يكون باللون الأزرق
                                 if (strtotime($comm_Date) > strtotime($_SESSION['LastSeen'])) { ?>
 
                                     <a href="../student/view.php?do=view&video=<?php echo $video ?>" class=" my-8">
                                         <div class="shadow-lg bg-white py-4 px-4 my-6 rounded-lg  bg bg-r-8 bg-blue-200">
-                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>  </p>
+                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>
+                                            </p>
                                             <p class="text-gray-500 text-xs mt-2 mx-8"> <?php echo "في :" . $_SESSION['comment_date'][$i] ?></p>
 
                                         </div>
                                     </a>
-                            <?php    } else { ?>
+                                <?php } else { ?>
 
                                     <a href="../student/view.php?do=view&video=<?php echo $video ?>" class=" my-8">
                                         <div class="shadow-lg bg-white py-4 px-4 my-6 rounded-lg  bg bg-r-8 ">
-                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>  </p>
+                                            <p><i class="far fa-bell text-sub-color mx-2"></i><?php echo $notif; ?>
+                                            </p>
                                             <p class="text-gray-500 text-xs mt-2 mx-8"> <?php echo "في :" . $_SESSION['comment_date'][$i] ?></p>
 
                                         </div>
                                     </a>
-                                <?php     }   ?>
+                                <?php } ?>
 
 
                             <?php } ?>

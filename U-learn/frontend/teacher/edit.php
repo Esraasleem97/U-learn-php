@@ -1,15 +1,16 @@
 <?php
 
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
     require "../../Includes/header.php";
     require "../../Includes/navbar/teacher.php";
     require "../../backend/view-video.php";
     require "../../backend/edit-video.php";
     require "../../backend/get-course.php";
-
+// احضار المةاد التي يدرسها الاستاذ
     $video = isset($_GET['video']) ? $_GET['video'] : "";
     getCourse("`course-teacher`= ", $_SESSION['userid']);
+
 
 
     ?>

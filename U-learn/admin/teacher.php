@@ -19,6 +19,7 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
 
     acceptuser($email , $Approve);
 
+    // عرض طلبات الانضمام للموقع من الأساتذة
     ?>
     <div class="bg-gray-100 w-full  min-h-screen">
         <form action="">

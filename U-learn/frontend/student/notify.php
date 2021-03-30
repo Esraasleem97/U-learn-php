@@ -1,23 +1,20 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
     require "../../Includes/header.php";
     require "../../Includes/navbar/student.php";
     require "../../backend/notifications.php";
     getcomments();
     $commentID = "";
-    //print_r($_SESSION['commentID']);
+// احضار التعلقيات الخاصة بالمستخدم
     for ($i = 0; $i < count($_SESSION['commentID']); $i++) {
         if (($i+1) == count($_SESSION['commentID'])) {
             $commentID = $commentID . $_SESSION['commentID'][$i];
         } else {
             $commentID = $commentID . $_SESSION['commentID'][$i] . ",";
-
         }
     }
- //   echo $commentID;
-//    $condtion = "AND `Comment-reply` IN (".$commentID.")";
-
+// احضار الردود على التعليقات الخاصه بالمستخدم
     $condtion = "AND `Comment-reply` IN (".$commentID.")";
     getnotifications($condtion)
     ?>
@@ -43,6 +40,7 @@ if (isset($_SESSION['username'])) {
 
                                 $video = $_SESSION['videoID'][$i];
                                 $comm_Date = $_SESSION['comment_date'][$i];
+                                // اذا كان التعليق بعد اخر ظهور سوف يكون باللون الازرق
                                 if (strtotime($comm_Date) > strtotime($_SESSION['LastSeen'])) { ?>
 
                                     <a href="../student/view.php?do=view&video=<?php echo $video ?>" class=" my-8">

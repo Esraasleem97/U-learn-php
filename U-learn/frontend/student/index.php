@@ -1,9 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userid'])) {
     require "../../Includes/header.php";
     require "../../Includes/navbar/student.php";
     require "../../backend/get-video.php";
+
+    // إحضار الدروس التابعة للمادة التي تم إختيارها من قاعدة البانات عبر رقم المداة
 
     $courseID = isset($_GET['courseID']) ? $_GET['courseID'] : "";
     getVideo("`course-num` =", intval($courseID));
@@ -19,7 +21,7 @@ if (isset($_SESSION['username'])) {
 
                     <div class="flex flex-wrap">
                         <?php
-
+// عرض الدروس التابعة للمادة التي تم إختيارها
                         if ($_SESSION['rowcount'] > 0) {
                             for ($i = 0; $i < count($_SESSION['videoID']); $i++) {
 

@@ -2,7 +2,7 @@
 function getcomments(){
 
     require('db.php');
-
+// إحضار التعليقات الخاصه بالمستخدم
 
     $query = "SELECT `comments`.* FROM  `comments` WHERE `Comment-reply` = 0 AND `Comment-user` = " . $_SESSION['userid'];
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
@@ -14,7 +14,7 @@ function getcomments(){
 
 function getnotifications($condtion)
 {
-
+// إحضار المعلومات المهمه للاشعارات
 
     require('db.php');
 
@@ -52,10 +52,4 @@ WHERE `video`.`Validity` = 1 " . $condtion ." ORDER BY `comments`.`Comment-date`
      $result2 = mysqli_query($con, $query2) or die(mysqli_error($con));
 
 
-  //  $query4 = "SELECT `LastSeen` FROM `users` WHERE `userid`= " . $_SESSION['userid'];
-    //$result4 = mysqli_query($con, $query4) or die(mysqli_error($con));
-    //while ($row = mysqli_fetch_assoc($result4)) {
-      //  $_SESSION['LastSeen2'] = $row['LastSeen'];}
-
-   // echo "قبل". $_SESSION['LastSeen'] . "<br> بعد  " .  $_SESSION['LastSeen2'];
 }

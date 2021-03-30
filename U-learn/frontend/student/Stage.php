@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['username'])){
+if (isset($_SESSION['userid'])){
 
 require "../../Includes/header.php";
 require "../../Includes/navbar/student.php";
