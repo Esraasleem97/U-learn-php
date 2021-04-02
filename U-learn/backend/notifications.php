@@ -22,7 +22,7 @@ function getnotifications($condtion)
 FROM `video` INNER JOIN `course`ON `course-number` = `course-num`
 INNER JOIN `comments` ON `comments`.`Comment-video` = `video`.`video-num`
 INNER JOIN `users` ON `users`.`userid` = `comments`.`Comment-user`
-WHERE `video`.`Validity` = 1 " . $condtion ." ORDER BY `comments`.`Comment-date` DESC";
+WHERE `video`.`Validity` = 1 ". $condtion ." ORDER BY `comments`.`Comment-date` DESC";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($result);
     $_SESSION['rowcount'] = $rowcount;
@@ -42,6 +42,9 @@ WHERE `video`.`Validity` = 1 " . $condtion ." ORDER BY `comments`.`Comment-date`
         array_push($_SESSION['comment_date'], $row['Comment-date']);
 
     }
+
+    echo  $_SESSION['rowcount'];
+
     $query3 = "SELECT `LastSeen` FROM `users` WHERE `userid`= " . $_SESSION['userid'];
     $result3 = mysqli_query($con, $query3) or die(mysqli_error($con));
     while ($row = mysqli_fetch_assoc($result3)) {

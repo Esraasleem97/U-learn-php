@@ -7,6 +7,7 @@ if (isset($_SESSION['userid'])) {
     getcomments();
     $commentID = "";
 // احضار التعلقيات الخاصة بالمستخدم
+    $commentID = 0;
     for ($i = 0; $i < count($_SESSION['commentID']); $i++) {
         if (($i+1) == count($_SESSION['commentID'])) {
             $commentID = $commentID . $_SESSION['commentID'][$i];
