@@ -20,7 +20,7 @@ if ($do == 'view') {
         $_SESSION['video-title'] = $row['video-name'];
         $_SESSION['video-details'] = $row['video-summary'];
         $_SESSION['video-course'] = $row['course-number'];
-
+        $_SESSION['lesson-content'] = $row['lesson-content'];
     }
     //`Comment-reply` = 0 AND
 

@@ -67,50 +67,54 @@ if (isset($_SESSION['userid'])) {
                                      ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">
                                 <!-- scroll area -->
                                 <section class="overflow-auto p-8 w-full h-full flex flex-col">
-                                    <header
-                                            class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
-                                        <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                                            <span>قم بتحميل فيديو</span>&nbsp;
-                                        </p>
-                                        <input type="file" name="media" id="media"  style="color:transparent; width:90px;" class="file_multi_video"  />
+                                <header
+                                                class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
+                                            <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
+                                                <span>قم بتحميل ملف </span>&nbsp;
+                                            </p>
+                                            <input type="file" name="media" id="media"
+                                                   style="color:transparent; width:90px;" class="file_multi_video"
+                                                   accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf"   />
 
-                                    </header>
+
+                                                    <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
+                                                <span>قم بتحميل صورة أو فيديو</span>&nbsp;
+                                            </p>
+                                            <input type="file" name="media2" id="media2"
+                                                   style="color:transparent; width:90px;" class="file_multi_video" accept="video/*, image/*" />
+                                        </header>
+
 
                                     <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
                                     </h1>
 
 
-                                    <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
+                                    <!-- <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
                                         <li id="empty"
                                             class="h-full w-full text-center flex flex-col justify-center items-center">
                                             <?php
 
-$pizza  = $_SESSION['video-content'];
-$pieces = explode(".", $pizza);
-$allowedExts = array("mp3", "mp4", "wma", "webm" );
-$allowedExts2 = array("jpg", "jpeg", "gif" );
+if ( $_SESSION['video-content'] != ""){
 
-if (in_array($pieces[1], $allowedExts)) {
-                             echo "   <video id='player' controls class='w-full'>";
-                    
-                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
-                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'        />";
-                            echo "</video>";
-}elseif (in_array($pieces[1], $allowedExts2)) {
-echo " <img src='../../videos/" . $_SESSION['video-content'] . "' alt='' class='h-96 mx-auto my-8'>";
-
-                              } else {
-
-       
-                                echo "<a href='../../videos/" . $_SESSION['video-content'] . "' class='text-red-600'> انقر لعرض أو تحميل الملف    </a>";
-                            }
+    $pizza  = $_SESSION['video-content'];
+    $pieces = explode(".", $pizza);
+    $allowedExts = array("mp3", "mp4", "wma", "webm" );
+    $allowedExts2 = array("jpg", "jpeg", "gif" );
+    
+    if (in_array($pieces[1], $allowedExts)) {
+                                 echo "   <video id='player' controls class='w-full'>";
+                        
+                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'        />";
+                                echo "</video>";
+    }elseif (in_array($pieces[1], $allowedExts2)) {
+    echo " <img src='../../videos/" . $_SESSION['video-content'] . "' alt='' class='h-96 mx-auto my-8'>";
+    }}
                             ?>
 
                                         </li>
 
-
-
-                                    </ul> 
+                                    </ul>  -->
                                     <video class="w-full" id="view" style="display: none;" controls >
                                         <source src="mov_bbb.mp4" id="video_here">
                                         Your browser does not support HTML5 video.

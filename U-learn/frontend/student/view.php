@@ -75,12 +75,25 @@ if (isset($_SESSION['userid'])) {
                     <div class="w-full lg:w-4/5 mx-auto">
                     <?php
 
+                    if ($_SESSION['lesson-content'] != ""){
+
+$pizza1  =  $_SESSION['lesson-content'];
+$pieces1 = explode(".", $pizza1);
+$allowedExts1 = array("xlsx","xls","doc", "docx" ,"ppt", "pptx","txt","pdf");
+if (in_array($pieces1[1], $allowedExts1)) {
+
+echo "<a href='../../videos/" .  $_SESSION['lesson-content'] . "' class='text-red-600'> انقر لعرض أو تحميل الملف    </a>";
+echo "<br><br><br>";
+}
+                    }
+
+                    if ( $_SESSION['video-content'] != ""){
+
 $pizza  = $_SESSION['video-content'];
 $pieces = explode(".", $pizza);
 $allowedExts = array("mp3", "mp4", "wma", "webm" );
 $allowedExts2 = array("jpg", "jpeg", "gif" );
 
-// echo $pieces[1];
 if (in_array($pieces[1], $allowedExts)) {
                              echo "   <video id='player' controls class='w-full'>";
                     
@@ -89,12 +102,8 @@ if (in_array($pieces[1], $allowedExts)) {
                             echo "</video>";
 }elseif (in_array($pieces[1], $allowedExts2)) {
 echo " <img src='../../videos/" . $_SESSION['video-content'] . "' alt='' class='h-96 mx-auto my-8'>";
-
-                              } else {
-
-       
-                                echo "<a href='../../videos/" . $_SESSION['video-content'] . "' class='text-red-600'> انقر لعرض أو تحميل الملف    </a>";
-                            }
+}
+}                         
                             ?>
 
 

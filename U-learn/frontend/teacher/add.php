@@ -56,13 +56,21 @@ if (isset($_SESSION['userid'])) {
                                         <header
                                                 class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                                             <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                                                <span>قم بتحميل ملف فيديو</span>&nbsp;
+                                                <span>قم بتحميل ملف </span>&nbsp;
                                             </p>
                                             <input type="file" name="media" id="media"
                                                    style="color:transparent; width:90px;" class="file_multi_video"
-                                                    required="required"/>
+                                                   accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf"   />
 
+
+                                                    <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
+                                                <span>قم بتحميل صورة أو فيديو</span>&nbsp;
+                                            </p>
+                                            <input type="file" name="media2" id="media2"
+                                                   style="color:transparent; width:90px;" class="file_multi_video" accept="video/*, image/*" />
                                         </header>
+
+
 
                                         <h1 class="pt-8 pb-3 font-semibold sm:text-lg text-gray-900">
                                         </h1>
