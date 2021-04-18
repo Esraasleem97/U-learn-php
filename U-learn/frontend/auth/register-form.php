@@ -11,9 +11,16 @@ require "../../backend/create-account.php";
 <!--            <div class="text-green-500 bg-green-100 border-r-4 border-green-500 py-2 px-4 mx-auto w-full lg:w-7/12">-->
 <!--                --><?php //echo $_SESSION['success-message']; ?>
 <!--            </div>-->
-            <div class="text-red-500 bg-red-100 border-r-4 mt-4 border-red-500 py-2 px-4 mx-auto w-full lg:w-7/12">
-                <?php echo $_SESSION['Error-message']; ?>
+            <div>
+                <?php
+                if (!empty($_SESSION['Error-message'])) { ?>
+                <p class="text-red-500 bg-red-100 mt-4 border-r-4 border-red-500 py-2 px-4 mx-auto w-full lg:w-7/12">
+                    <?php echo $_SESSION['Error-message'];
+                    echo "</p>";
+                    }
+                    ?>
             </div>
+
             <div></div>
             <form action=""  method="post" class="mx-auto rounded-lg shadow-xl overflow-hidden p-6 space-y-10 bg-white w-full my-4  lg:w-7/12" class="register-form">
                 <h2 class="text-2xl font-bold text-center">تسجيل</h2>

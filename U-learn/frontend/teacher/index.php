@@ -54,7 +54,7 @@ require "../../backend/get-video.php";
                 </table>
 
                 <?php
-                } elseif ( count($_SESSION['Video']) == 0){
+                } elseif ( $_SESSION['rowcount'] == 0){
                 ?>
                 <div class=" text-center w-4/6 mx-auto my-36">
                     <img src="../../layouts/img/login.svg" alt="" class="h-96 mx-auto my-8">
