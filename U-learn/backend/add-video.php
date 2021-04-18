@@ -5,7 +5,7 @@ require "../../backend/db.php";
 // When form submitted, insert values into the database.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // الملفات التي يمكن قبولها
-    $allowedExts = array("mp3", "mp4", "wma", "webm");
+    // $allowedExts = array("mp3", "mp4", "wma", "webm" );
 
     $title = $_POST['title'];
     $details = $_POST['details'];
@@ -18,17 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $extension = pathinfo($_FILES['media']['name'], PATHINFO_EXTENSION);
 
 // التأكد من أن امتداد الفيديو مسموح به
-    if (in_array($extension, $allowedExts)) {
+    // if (in_array($extension, $allowedExts)) {
         $mediatoDB = rand(0, 100) . $_FILES['media']['name'];
         move_uploaded_file($mediaTmp, "../../videos/" . $mediatoDB);
         $query = "INSERT INTO `video`(`video-name`, `course-number`, `video-summary`, `video-content`, `video-date`, `Validity`)
                  VALUES ('$title','$course','$details','$mediatoDB','$create_date',0)";
         $result = mysqli_query($con, $query);
-    } else {
+    // } else {
 
-        $_SESSION['Error-message'] = "invalid file";
-        echo $_SESSION['Error-message'];
-    }
+    //     $_SESSION['Error-message'] = "invalid file";
+    //     echo $_SESSION['Error-message'];
+    // }
 
 }
 ?>

@@ -73,15 +73,32 @@ if (isset($_SESSION['userid'])) {
 
 
                     <div class="w-full lg:w-4/5 mx-auto">
-                        <video id="player" controls class="w-full">
-                            <?php
-                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
-                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
+                    <?php
 
+$pizza  = $_SESSION['video-content'];
+$pieces = explode(".", $pizza);
+$allowedExts = array("mp3", "mp4", "wma", "webm" );
+$allowedExts2 = array("jpg", "jpeg", "gif" );
+
+// echo $pieces[1];
+if (in_array($pieces[1], $allowedExts)) {
+                             echo "   <video id='player' controls class='w-full'>";
+                    
+                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'        />";
+                            echo "</video>";
+}elseif (in_array($pieces[1], $allowedExts2)) {
+echo " <img src='../../videos/" . $_SESSION['video-content'] . "' alt='' class='h-96 mx-auto my-8'>";
+
+                              } else {
+
+       
+                                echo "<a href='../../videos/" . $_SESSION['video-content'] . "' class='text-red-600'> انقر لعرض أو تحميل الملف    </a>";
+                            }
                             ?>
 
 
-                        </video>
+                        
 
                     </div>
 

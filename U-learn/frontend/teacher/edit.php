@@ -72,7 +72,7 @@ if (isset($_SESSION['userid'])) {
                                         <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
                                             <span>قم بتحميل فيديو</span>&nbsp;
                                         </p>
-                                        <input type="file" name="media" id="media"  style="color:transparent; width:90px;" class="file_multi_video" accept="video/*" />
+                                        <input type="file" name="media" id="media"  style="color:transparent; width:90px;" class="file_multi_video"  />
 
                                     </header>
 
@@ -83,18 +83,34 @@ if (isset($_SESSION['userid'])) {
                                     <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
                                         <li id="empty"
                                             class="h-full w-full text-center flex flex-col justify-center items-center">
-                                            <video id="player" controls class="w-full">
-                                                <?php
-                                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
-                                                echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'/>";
-                                                ?>
-                                            </video>
+                                            <?php
+
+$pizza  = $_SESSION['video-content'];
+$pieces = explode(".", $pizza);
+$allowedExts = array("mp3", "mp4", "wma", "webm" );
+$allowedExts2 = array("jpg", "jpeg", "gif" );
+
+if (in_array($pieces[1], $allowedExts)) {
+                             echo "   <video id='player' controls class='w-full'>";
+                    
+                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/mp4'/>";
+                            echo "<source src='../../videos/" . $_SESSION['video-content'] . "' type='video/ogg'        />";
+                            echo "</video>";
+}elseif (in_array($pieces[1], $allowedExts2)) {
+echo " <img src='../../videos/" . $_SESSION['video-content'] . "' alt='' class='h-96 mx-auto my-8'>";
+
+                              } else {
+
+       
+                                echo "<a href='../../videos/" . $_SESSION['video-content'] . "' class='text-red-600'> انقر لعرض أو تحميل الملف    </a>";
+                            }
+                            ?>
 
                                         </li>
 
 
 
-                                    </ul>
+                                    </ul> 
                                     <video class="w-full" id="view" style="display: none;" controls >
                                         <source src="mov_bbb.mp4" id="video_here">
                                         Your browser does not support HTML5 video.
@@ -110,11 +126,11 @@ if (isset($_SESSION['userid'])) {
                                         function updateValue(e) {
                                             log.style.display = "none";
                                             $(document).on("change", ".file_multi_video", function(evt) {
-                                                document.getElementById("view").style.display = "block";
+                                                // document.getElementById("view").style.display = "block";
 
-                                                var $source = $('#video_here');
-                                                $source[0].src = URL.createObjectURL(this.files[0]);
-                                                $source.parent()[0].load();
+                                                // var $source = $('#video_here');
+                                                // $source[0].src = URL.createObjectURL(this.files[0]);
+                                                // $source.parent()[0].load();
                                             });
                                         }
                                     </script>

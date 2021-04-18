@@ -56,11 +56,11 @@ if (isset($_SESSION['userid'])) {
                                         <header
                                                 class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
                                             <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                                                <span>قم بتحميل فيديو</span>&nbsp;
+                                                <span>قم بتحميل ملف فيديو</span>&nbsp;
                                             </p>
                                             <input type="file" name="media" id="media"
                                                    style="color:transparent; width:90px;" class="file_multi_video"
-                                                   accept="video/*" required="required"/>
+                                                    required="required"/>
 
                                         </header>
 
@@ -95,11 +95,11 @@ if (isset($_SESSION['userid'])) {
                                             function updateValue(e) {
                                                 log.style.display = "none";
                                                 $(document).on("change", ".file_multi_video", function (evt) {
-                                                    document.getElementById("view").style.display = "block";
+                                                    // document.getElementById("view").style.display = "block";
 
-                                                    var $source = $('#video_here');
-                                                    $source[0].src = URL.createObjectURL(this.files[0]);
-                                                    $source.parent()[0].load();
+                                                    // var $source = $('#video_here');
+                                                    // $source[0].src = URL.createObjectURL(this.files[0]);
+                                                    // $source.parent()[0].load();
                                                 });
                                             }
                                         </script>
