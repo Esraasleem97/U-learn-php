@@ -66,6 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "heloooooooooo";
     }
     $result = mysqli_query($con, $query1) or die(mysqli_error($con));
-    header("Location: ../teacher/index.php");
+    // header("Location: ../teacher/index.php");
+    ?>
 
+    <script>
+    window.location.replace('../teacher/index.php');
+
+    alert("تم تعديل الدرس بنجاح");
+    </script>
+    <?php
 }

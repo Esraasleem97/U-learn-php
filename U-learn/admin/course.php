@@ -57,9 +57,10 @@ if (isset($_SESSION['userid']) &&  $_SESSION['userid'] ==1 ) {
                             echo "</td>";
 
                             echo "<td>";
-                            echo "<a href='?do=accept&video=" . $_SESSION['videoID'][$i] . "' class='btn btn-success'>قبول</a>
-                           <a href='?do=reject&video=" . $_SESSION['videoID'][$i]. "' class='btn btn-danger'> رفض</a>
-                            <a href='view-course.php?Validity&do=view&video=" . $_SESSION['videoID'][$i]. "' class='btn btn-info'> عرض </a>";
+                            
+                        //     <a href='?do=accept&video=" . $_SESSION['videoID'][$i] . "' class='btn btn-success'>قبول</a>
+                        //    <a href='?do=reject&video=" . $_SESSION['videoID'][$i]. "' class='btn btn-danger'> رفض</a>
+                           echo "   <a href='../frontend/student/view.php?do=view&video=".$_SESSION['videoID'][$i]."' class='btn btn-info'> عرض </a>";
                             echo "</td>";
                             echo "</tr> ";
                         } ?>

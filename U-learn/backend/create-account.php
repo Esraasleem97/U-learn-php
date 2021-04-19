@@ -26,7 +26,7 @@ if (isset($_REQUEST['name'])) {
         $result = mysqli_query($con, $query);
         if ($result) {
 
-            $_SESSION['success-message'] = " لقد تم تسجيلك بنجاح$username.<br/> 
+            $_SESSION['success-message'] = " لقد تم تسجيلك بنجاح $username.<br/> 
                   من فضلك انتظر حتى يتم قبول طلبك,
                   ثم حاول تسجيل الدخول.
                   ";

@@ -35,13 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         move_uploaded_file($mediaTmp2, "../../videos/" . $mediatoDB2);
 
 $query = "INSERT INTO `video`(`video-name`, `course-number`, `video-summary`, `video-content`, `video-date`, `Validity` , `lesson-content`)
-                 VALUES ('$title','$course','$details','$mediatoDB2','$create_date',0 , '$mediatoDB')";
+                 VALUES ('$title','$course','$details','$mediatoDB2','$create_date',1 , '$mediatoDB')";
         $result = mysqli_query($con, $query);
-    // } else {
+  
+    
+?>
 
-    //     $_SESSION['Error-message'] = "invalid file";
-    //     echo $_SESSION['Error-message'];
-    // }
+<script>
+window.location.replace('../teacher/index.php');
+alert("تمت اضافة الدرس بنجاح");
+
+</script>
+<?php
+        // header("Location: ../teacher/index.php");
 
 }
 ?>

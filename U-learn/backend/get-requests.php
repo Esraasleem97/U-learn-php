@@ -33,7 +33,7 @@ while ($row = mysqli_fetch_array($result2)) {
 
 // get video request
 
-$query3 = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` WHERE  Validity = 0";
+$query3 = "SELECT * FROM `video` INNER JOIN `course`ON `course-number` = `course-num` ";
 $result3 = mysqli_query($con, $query3) or die(mysqli_error($con));
 $rowcount3 = mysqli_num_rows($result3);
 $_SESSION['video-number'] = $rowcount3;

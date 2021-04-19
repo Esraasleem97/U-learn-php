@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION['success-message'] = "";
+$_SESSION['Error-message'] = "";
 require "../../Includes/header.php";
 require "../../backend/create-account.php";
 
@@ -8,15 +11,24 @@ require "../../backend/create-account.php";
 <div class="bg-gray-100 w-full min-h-screen flex">
     <div class="container m-auto px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-<!--            <div class="text-green-500 bg-green-100 border-r-4 border-green-500 py-2 px-4 mx-auto w-full lg:w-7/12">-->
-<!--                --><?php //echo $_SESSION['success-message']; ?>
-<!--            </div>-->
+
+
+           
             <div>
                 <?php
                 if (!empty($_SESSION['Error-message'])) { ?>
                 <p class="text-red-500 bg-red-100 mt-4 border-r-4 border-red-500 py-2 px-4 mx-auto w-full lg:w-7/12">
                     <?php echo $_SESSION['Error-message'];
                     echo "</p>";
+                    }
+                    ?>
+                      <?php
+                if (!empty($_SESSION['success-message'])) { ?>
+                <p class="text-green-500 bg-green-100 mt-4 border-r-4 border-green-500 py-2 px-4 mx-auto w-full lg:w-7/12">
+                    <?php echo $_SESSION['success-message'];
+                    echo "</p>";
+                    header('Refresh: 8; URL=login-form.php');
+
                     }
                     ?>
             </div>
@@ -46,7 +58,7 @@ require "../../backend/create-account.php";
                     <input type="radio" id="student" name="user" value="Student">
                     <label for="student">طالب  </label><br>
                     <input type="radio" id="teather" name="user" value="teather">
-                    <label for="teather">معلم </label><br>
+                    <label for="teather">استاذ </label><br>
                     <label for="student" class="label"><i class="ti ti-lock"></i> تسجل بحساب  </label>
 
                 </div>
