@@ -19,6 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userid = intval($row['userid']);
         $_SESSION['userid'] = $userid;
         $_SESSION['GroupID'] = $row['GroupID'];
+        $_SESSION['Stage'] = $row['Stage'];
+
+
 
     }
     // اذا عاد صف واحد معناه أنه اليوزر موجود وإلا سوف يخبره أن الاسم أو الباسوورد خاطء
@@ -29,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
             if ($_SESSION['GroupID'] == 1) {
-                header("Location: ../student/Stage.php");
+                header("Location: ../student/book.php");
             } elseif ($_SESSION['GroupID'] == 2) {
                 header("Location: ../teacher/index.php");
             } elseif ($_SESSION['GroupID'] == 3) {

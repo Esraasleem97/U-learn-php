@@ -11,8 +11,10 @@ if (isset($_REQUEST['name'])) {
     $password2 = $_POST['password_confirmation'];
     $user = $_POST['user'];
     $create_date = date("Y-m-d H:i:s");
+    $stage = null;
     if ($user == 'Student') {
         $userGroup = 1;
+        $stage = $_POST['studentStage'];
     } elseif ($user == 'teather') {
         $userGroup = 2;
     }
@@ -21,8 +23,8 @@ if (isset($_REQUEST['name'])) {
     if ($password == $password2) {
 
         // اضافة  المتسخدم إلى الداتا بيس
-        $query = "INSERT INTO `users`(`email`, `password`, `username`, `user-Approve`, `LastSeen`, `GroupID` )
-                     VALUES ('$email', '$password','$username', 0 ,  '$create_date', '$userGroup')";
+        $query = "INSERT INTO `users`(`email`, `password`, `username`, `user-Approve`, `LastSeen`, `GroupID` , `Stage` )
+                     VALUES ('$email', '$password','$username', 0 ,  '$create_date', '$userGroup', '$stage')";
         $result = mysqli_query($con, $query);
         if ($result) {
 

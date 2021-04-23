@@ -4,13 +4,11 @@ if (isset($_SESSION['userid'])){
 require "../../Includes/header.php";
 require "../../Includes/navbar/student.php";
 require "../../backend/get-course.php";
-if (isset($_GET['stage'])) {
-    // اذا دخل إلى صفحة المواد عبر اختيار مرحلة دراسية معينة
-    getCourse("`course-stage` IN ", $_GET['stage']);
-}else {
+
+
     // اذا دخل إلى صفحة المواد عبر اختيار قائمة الدروس
-    getCourse("`course-stage` IN ", "(1,2,3,4)");
-}
+    getCourse("`course-stage` = ", $_SESSION['Stage']);
+
 ?>
 <div class="bg-gray-100 w-full">
     <form action="">

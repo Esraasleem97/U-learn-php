@@ -35,7 +35,7 @@ require "../../backend/create-account.php";
 
             <div></div>
             <form action=""  method="post" class="mx-auto rounded-lg shadow-xl overflow-hidden p-6 space-y-10 bg-white w-full my-4  lg:w-7/12" class="register-form">
-                <h2 class="text-2xl font-bold text-center">  تسجيل بحساب استاذ</h2>
+                <h2 class="text-2xl font-bold text-center">  تسجيل بحساب طالب</h2>
                 <div class="input-form">
                     <input type="text" id="username" name="name" placeholder=" " class="input" required />
                     <label for="username" class="label"><i class="far fa-user"></i> الاسم كامل</label>
@@ -55,10 +55,23 @@ require "../../backend/create-account.php";
 
                 <div class="input-form" id="user" style="display: none;">
 
-                    <input type="text" id="user" name="user" value="teather">
+                    <input type="text" id="user" name="user" value="Student">
 
                 </div>
 
+                <div class="input-form"  required>
+
+                    <input type="radio" id="1" name="studentStage" value="1">
+                    <label for="1"> سنة أولى  </label><br>
+                    <input type="radio" id="2" name="studentStage" value="2">
+                    <label for="2"> سنة ثانية  </label><br>
+                    <input type="radio" id="3" name="studentStage" value="3">
+                    <label for="3"> سنة ثالثة  </label><br>
+                    <input type="radio" id="4" name="studentStage" value="4">
+                    <label for="4"> سنة رابعة  </label><br>
+                    <label for="student" class="label"><i class="ti ti-lock"></i> السنة الدراسية  </label>
+
+                </div>
 
                 <div class="my-12 flex justify-center w-full">
                     <input type="submit" class="btn btn-main" value="تسجيل">
@@ -72,6 +85,7 @@ require "../../backend/create-account.php";
         </div>
     </div>
 </div>
+
 
 
 <?php

@@ -41,7 +41,9 @@ require "../../backend/login.php";
                 </div>
                 <div class="w-full text-center">
                     <a href="register-form.php" class="text-sm text-main-color hover:underline">إنشاء
-                        حساب</a>
+                        حساب معلم</a> <br>
+                    <a href="register-form-std.php" class="text-sm text-main-color hover:underline">إنشاء
+                        حساب طالب</a>
                 </div>
             </form>
             <div class="hidden md:block">
