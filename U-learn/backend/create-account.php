@@ -1,6 +1,5 @@
 <?php
 require "../../backend/db.php";
-//require "../../frontend/auth/register-form.php";
 // When form submitted, insert values into the database.
 if (isset($_REQUEST['name'])) {
 
@@ -17,6 +16,8 @@ if (isset($_REQUEST['name'])) {
         $stage = $_POST['studentStage'];
     } elseif ($user == 'teather') {
         $userGroup = 2;
+        $stage = null;
+
     }
 
 // مقارنه الباسوورد المدخل للتأكد انه متشابه
