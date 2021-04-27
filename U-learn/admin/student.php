@@ -41,6 +41,8 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                             <th>#</th>
                             <th>اسم الطالب</th>
                             <th>البريد الإلكتروني</th>
+                            <th>المرحلة الدراسية</th>
+
                             <th></th>
                             </thead>
                             <tbody>
@@ -51,11 +53,23 @@ if (isset($_SESSION['userid']) && $_SESSION['userid'] == 1) {
                                 echo " <td> ";
                                 echo $_SESSION['student-name'][$i];
                                 echo "</td>";
+                                
                                 echo "<td> ";
                                 $userEmail = $_SESSION['student-email'][$i];
                                 echo $userEmail;
                                 echo "</td>";
-
+                                echo " <td> ";
+                                $studentStage="";
+                                If( $_SESSION['student-stage'][$i]== 1)
+                                $studentStage = "المرحلة الأولى";
+                                elseIf( $_SESSION['student-stage'][$i]== 2)
+                                $studentStage = "المرحلة الثانية";
+                                elseIf( $_SESSION['student-stage'][$i]== 3)
+                                $studentStage = "المرحلة الثالثة";
+                                elseIf( $_SESSION['student-stage'][$i]== 4)
+                                $studentStage = "المرحلة الرابعة";
+                                echo  $studentStage;
+                                echo "</td>";
                                 echo "<td>";
                                 echo "<a href='?do=accept&email=" . $userEmail . "' class='btn btn-success'>قبول</a>";
                                 echo " <a href='?do=reject&email=" . $userEmail . "' class='btn btn-danger'>رفض</a>";

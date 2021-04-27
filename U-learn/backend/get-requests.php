@@ -9,10 +9,12 @@ $rowcount = mysqli_num_rows($result);
 $_SESSION['student-number'] = $rowcount;
 $_SESSION['student-name'] = array();
 $_SESSION['student-email'] = array();
+$_SESSION['student-stage'] = array();
 
 while ($row = mysqli_fetch_array($result)) {
     array_push($_SESSION['student-name'], $row['username']);
     array_push($_SESSION['student-email'], $row['email']);
+    array_push($_SESSION['student-stage'], $row['Stage']);
 
 }
 
